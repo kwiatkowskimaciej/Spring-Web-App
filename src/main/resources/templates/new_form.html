@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{general :: head}">
+    <title>New Form</title>
+</head>
+<body>
+<nav th:replace="~{general :: navbar}"> </nav>
+
+<div align="center">
+  <h1>Nowy salon</h1>
+
+  <br>
+
+  <form action="#" th:action="@{/save}" th:object="${salon}" method="post">
+    <table border="1" cellpadding="10">
+      <tr>
+        <td>Numer salonu</td>
+        <td><input type="text" th:field="*{nr_salonu}"></td>
+      </tr>
+      <tr>
+        <td>Nazwa</td>
+        <td><input type="text" th:field="*{nazwa}"></td>
+      </tr>
+      <tr>
+        <td>data_zalozenia</td>
+        <td><input type="text" th:field="*{data_zalozenia}"></td>
+      </tr>
+      <tr>
+        <td>numer_adresu</td>
+        <td><input type="text" th:field="*{nr_adresu}"></td>
+      </tr>
+      <tr>
+        <td>numer zbioru telefonow</td>
+        <td><input type="text" th:field="*{nr_zbioru_telefonow}"></td>
+      </tr>
+      <tr>
+        <td><button type="submit">Save</button></td>
+      </tr>
+    </table>
+  </form>
+
+</div>
+
+<div th:replace="~{general :: footer}"></div>
+</body>
+</html>

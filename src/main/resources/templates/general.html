@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:fragment="head (pageTitle)">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}" type="text/css">
+    <title th:text="${pageTitle}"></title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" th:fragment="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Main</a>
+                </li>
+
+                <li class="nav-item">
+                    <div th:remove="tag" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
+                                style="text-transform:capitalize"><span th:remove="tag" sec:authentication="name">thymeleaf</span></b></a>
+                    </div>
+                    <div th:remove="tag" sec:authorize="isAnonymous()"><a class="nav-link" th:href="@{/main}">Login</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/salon}">Salon</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div th:remove="tag" th:fragment="scripts">
+    <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}" type="text/javascript"></script>
+</div>
+</body>
+</html>

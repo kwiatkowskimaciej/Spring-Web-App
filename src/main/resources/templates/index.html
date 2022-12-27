@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:insert="~{general :: head (pageTitle='Welcome Page')}"></head>
+
+<nav th:replace="~{general :: navbar}"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mt-5">
+
+            <label style="font-size:30px">Welcome to the home page!</label>
+            <div style="font-size:20px">If you want to login, click <a th:href="@{/main}"><b>here</b></a> or in the
+                upper right corner.
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div th:replace="~{general :: scripts}"></div>
+
+</body>
+</html>
+
