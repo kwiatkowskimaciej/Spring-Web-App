@@ -1,3 +1,115 @@
-body {
-  background-color: white;
+body,
+html {
+  /* The image used */
+  /* background-image: url("../images/layered-waves-haikei.svg"); */
+  background-color: rgb(4 18 31);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
+.brand {
+  color: white;
+  font-family: "Fredoka One", cursive;
+  font-size: 32px;
+  margin-right: 3rem;
+}
+
+.brand i {
+  padding-right: 0.5rem;
+  color: white;
+}
+
+.fa-solid {
+  padding-right: 0.5rem;
+}
+
+footer i {
+  color: white;
+}
+
+header {
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+footer {
+  position: relative;
+  color: white;
+  z-index: 1;
+}
+
+/* article {
+  padding: 1rem;
+} */
+
+.article-container {
+  color: white;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.nav-link:link,
+.nav-link:visited {
+  color: rgba(238, 238, 238, 0.787);
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active {
+  color: #ffffff;
+}
+
+.waves {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: 0px; /*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 150px;
+}
+
+.parallax > use {
+  animation: move-forever 50s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 25s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 40s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 55s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 90s;
+}
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+.modal-b:hover {
+  text-decoration: underline;
 }

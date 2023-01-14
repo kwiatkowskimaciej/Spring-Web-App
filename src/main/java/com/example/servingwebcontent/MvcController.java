@@ -2,6 +2,7 @@ package com.example.servingwebcontent;
 
 import com.example.servingwebcontent.registration.UserDto;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.validation.Valid;
 
 @Controller
+@Configuration
 public class MvcController implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
