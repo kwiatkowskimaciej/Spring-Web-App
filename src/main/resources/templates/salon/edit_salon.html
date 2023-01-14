@@ -4,34 +4,116 @@
 <body>
 <nav th:replace="~{general :: navbar}"> </nav>
 
+<div class="container col-xxl-8 px-4 py-5 article-container">
+  <h1>Edit salon</h1>
 
-<form action="#" th:action="@{/update_salon}" th:object="${salon}" method="post">
-  <table border="1" cellpadding="10">
-    <tr>
-      <td>Numer salonu</td>
-      <td><input type="text" th:field="*{nr_salonu}" readonly="readonly"></td>
-    </tr>
-    <tr>
-      <td>Nazwa</td>
-      <td><input type="text" th:field="*{nazwa}"></td>
-    </tr>
-    <tr>
-      <td>data_zalozenia</td>
-      <td><input type="text" th:field="*{data_zalozenia}"></td>
-    </tr>
-    <tr>
-      <td>numer_adresu</td>
-      <td><input type="text" th:field="*{nr_adresu}"></td>
-    </tr>
-    <tr>
-      <td>numer zbioru telefonow</td>
-      <td><input type="text" th:field="*{nr_zbioru_telefonow}"></td>
-    </tr>
-    <tr>
-      <td><button type="submit">Save</button></td>
-    </tr>
-  </table>
-</form>
+  <form class="database-form" action="#" th:action="@{/update_salon}" th:object="${salon}" method="post">
+    <div class="mb-3">
+      <label for="NumerSalonu" class="form-label">Numer Salonu</label>
+      <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{nr_salonu}" readonly="readonly">
+      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="Nazwa" class="form-label">Nazwa</label>
+      <input type="text" class="form-control" id="Nazwa" th:field="*{nazwa}">
+    </div>
+
+    <div class="mb-3">
+      <label for="data_zalozenia" class="form-label">Data Założenia</label>
+      <input type="text" class="form-control" id="data_zalozenia" th:field="*{data_zalozenia}">
+    </div>
+
+    <div class="mb-3">
+      <label for="nr_adresu" class="form-label">Numer Adresu</label>
+      <input type="text" class="form-control" id="nr_adresu" th:field="*{nr_adresu}">
+    </div>
+
+    <div class="mb-3">
+      <label for="nr_zbioru_telefonow" class="form-label">Numer Zbioru Telefonów</label>
+      <input type="text" class="form-control" id="nr_zbioru_telefonow" th:field="*{nr_zbioru_telefonow}">
+    </div>
+
+    <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">Submit</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Cancel</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure to cancel everything? You will lost all your progress.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a class="btn btn-danger" th:href="@{/salon}" role="button">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="submitModalLabel">Submit</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure to submit changes? Everything will be added to database.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div>
+  <svg
+          class="waves"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 150 28"
+          preserveAspectRatio="none"
+          shape-rendering="auto"
+  >
+    <defs>
+      <path
+              id="gentle-wave"
+              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+      />
+    </defs>
+    <g class="parallax">
+      <use
+              xlink:href="#gentle-wave"
+              x="48"
+              y="0"
+              fill="rgba(106,99,246,0.3"
+      />
+      <use
+              xlink:href="#gentle-wave"
+              x="48"
+              y="3"
+              fill="rgba(106,99,246,0.4)"
+      />
+      <use
+              xlink:href="#gentle-wave"
+              x="48"
+              y="5"
+              fill="rgba(106,99,246,0.5)"
+      />
+      <use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(106,99,246)" />
+    </g>
+  </svg>
+</div>
 
 <div th:replace="~{general :: scripts}"></div>
 </body>
