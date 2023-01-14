@@ -26,11 +26,11 @@ public class SalonyDAO {
         String sql = "SELECT * from SALONY_SAMOCHODOWE";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Salon.class));
     }
-    public void save(Salon Salon) {
+    public void save(Salon salon) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("salony_samochodowe").usingColumns("nr_salonu", "nazwa", "data_zalozenia", "nr_adresu", "nr_zbioru_telefonow");
 
-        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(Salon);
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(salon);
         insertActor.execute(param);
     }
     public Salon get(int id) {
@@ -39,9 +39,9 @@ public class SalonyDAO {
         Salon salon = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Salon.class));
         return salon;
     }
-    public void update(Salon Salon) {
+    public void update(Salon salon) {
         String sql = "UPDATE SALONY_SAMOCHODOWE SET nr_salonu=:nr_salonu, nazwa=:nazwa, data_zalozenia=:data_zalozenia, nr_adresu=:nr_adresu, nr_zbioru_telefonow=:nr_zbioru_telefonow WHERE nr_salonu=:nr_salonu";
-        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(Salon);
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(salon);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 
         template.update(sql, param);
