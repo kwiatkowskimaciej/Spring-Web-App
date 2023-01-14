@@ -32,7 +32,7 @@ public class SalonyController {
         return "salon/new_salon";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/save_salon", method = RequestMethod.POST)
     public String save(@ModelAttribute("salon") Salon salon) {
         dao.save(salon);
 
@@ -48,14 +48,14 @@ public class SalonyController {
         return mav;
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update_salon", method = RequestMethod.POST)
     public String update(@ModelAttribute("salon") Salon salon) {
         dao.update(salon);
 
         return "redirect:/";
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/delete_salon/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 
