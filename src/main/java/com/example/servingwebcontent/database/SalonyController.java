@@ -24,19 +24,12 @@ public class SalonyController {
 
         return "salon/salon";}
 
-    @GetMapping("/user/registration")
-    public String showRegistrationForm(WebRequest request, Model model) {
-        UserDto userDto = new UserDto();
-        model.addAttribute("user", userDto);
-        return "registration";
-    }
-
-    @GetMapping("/new")
+    @GetMapping("/new_salon")
     public String showNewForm(Model model) {
         Salon salon = new Salon();
         model.addAttribute("salon",salon);
 
-        return "new_form";
+        return "salon/new_salon";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -46,9 +39,9 @@ public class SalonyController {
         return "redirect:/";
     }
 
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit_salon/{id}")
     public ModelAndView showEditForm(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("edit_form");
+        ModelAndView mav = new ModelAndView("salon/edit_salon");
         Salon salon = dao.get(id);
         mav.addObject("salon", salon);
 

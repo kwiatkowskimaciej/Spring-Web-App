@@ -1,8 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head th:insert="~{general :: head}">
-    <title>Title</title>
-</head>
+<head th:insert="~{general :: head (pageTitle='Edit Salon')}"></head>
 <body>
 <nav th:replace="~{general :: navbar}"> </nav>
 
@@ -35,6 +33,6 @@
   </table>
 </form>
 
-<div th:replace="~{general :: footer}"></div>
+<div th:replace="~{general :: scripts}"></div>
 </body>
 </html>

@@ -11,7 +11,7 @@
 <div class="container col-xxl-8 px-4 py-5 article-container">
   <h1>Salony Samochodowe</h1>
   <div>
-  <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nowy salon</a>
+  <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new_salon}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nowy salon</a>
   </div>
 
   <table class="table table-striped table-dark table-hover table-centered">
@@ -34,7 +34,7 @@
       <td th:text = "${salon.nr_zbioru_telefonow}">Numer Zbioru Telefonów</td>
 
       <td>
-        <a class="edit" th:href="@{'/edit/' + ${salon.nr_salonu}}"
+        <a class="edit" th:href="@{'/edit_salon/' + ${salon.nr_salonu}}"
            data-bs-toggle="tooltip"
            data-bs-placement="top"
            data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
