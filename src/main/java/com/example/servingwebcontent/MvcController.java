@@ -28,10 +28,8 @@ public class MvcController implements WebMvcConfigurer {
         registry.addViewController("/main_admin").setViewName("admin/main_admin");
         registry.addViewController("/main_user").setViewName("user/main_user");
 
-        registry.addViewController("/salon").setViewName("salon");
+        registry.addViewController("/salon").setViewName("salon/salon");
         registry.addViewController("/new").setViewName("new_form");
-
-        registry.addViewController("/greeting").setViewName("greeting");
     }
 
     @RequestMapping("/greeting")

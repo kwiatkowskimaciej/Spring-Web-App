@@ -22,7 +22,7 @@ public class SalonyController {
         List<Salon> listSalon = dao.findAll();
         model.addAttribute("listSalon", listSalon);
 
-        return "salon";}
+        return "salon/salon";}
 
     @GetMapping("/user/registration")
     public String showRegistrationForm(WebRequest request, Model model) {
