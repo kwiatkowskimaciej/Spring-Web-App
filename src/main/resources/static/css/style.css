@@ -117,3 +117,19 @@ p {
 .btn-sm {
 margin-bottom: 1rem
 }
+
+.edit {
+    color: white;
+}
+
+.edit:hover {
+    color: #d3d3d3;
+}
+
+.delete {
+    color: white;
+}
+
+.delete:hover {
+    color: #f94449;
+}
