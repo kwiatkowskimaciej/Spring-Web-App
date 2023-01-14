@@ -35,7 +35,7 @@ public class PracownicyDAO {
     }
     public Pracownik get(int id) {
         Object[] args = {id};
-        String sql = "SELECT * FROM PRACOWNICY WHERE nr_pracownika = " + args[0];
+        String sql = "SELECT * FROM PRACOWNICY p LEFT OUTER JOIN ADRESY a ON p.nr_adresu = a.nr_adresu LEFT OUTER JOIN TELEFONY t ON p.nr_zbioru_telefonow = t.nr_zbioru_telefonow WHERE nr_pracownika = " + args[0];
         Pracownik pracownik = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Pracownik.class));
         return pracownik;
     }
