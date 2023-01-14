@@ -32,13 +32,6 @@ public class MvcController implements WebMvcConfigurer {
         registry.addViewController("/new").setViewName("new_form");
     }
 
-    @RequestMapping("/greeting")
-    public String greeting(Model model) {
-        String test = "test";
-        model.addAttribute("test", test);
-        return "greeting";
-    }
-
     @Controller
     public class DashboardController {
         @RequestMapping("/main")

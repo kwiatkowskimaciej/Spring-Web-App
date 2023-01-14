@@ -37,8 +37,11 @@
         <a th:href="@{'/edit/' + ${salon.nr_salonu}}"
            data-bs-toggle="tooltip"
            data-bs-placement="top"
-           data-bs-title="Tooltip on top"><i class="fa-solid fa-pen-to-square"></i></a>
-        <a th:href="@{'/delete/' + ${salon.nr_salonu}}"><i class="fa-solid fa-trash"></i></a>
+           data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a th:href="@{'/delete/' + ${salon.nr_salonu}}"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           data-bs-title="Delete"><i class="fa-solid fa-pen-to-square"><i class="fa-solid fa-trash"></i></a>
       </td>
     </tr>
     </tbody>

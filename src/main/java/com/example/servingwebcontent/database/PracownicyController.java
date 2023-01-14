@@ -24,14 +24,7 @@ public class PracownicyController {
 
         return "pracownik";}
 
-    @GetMapping("/user/registration")
-    public String showRegistrationForm(WebRequest request, Model model) {
-        UserDto userDto = new UserDto();
-        model.addAttribute("user", userDto);
-        return "registration";
-    }
-
-    @GetMapping("/new")
+    @GetMapping("/new_pracownik")
     public String showNewForm(Model model) {
         Pracownik pracownik = new Pracownik();
         model.addAttribute("pracownik",pracownik);
@@ -39,14 +32,14 @@ public class PracownicyController {
         return "new_form";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/save_pracownik", method = RequestMethod.POST)
     public String save(@ModelAttribute("pracownik") Pracownik pracownik) {
         dao.save(pracownik);
 
         return "redirect:/";
     }
 
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit_pracownik/{id}")
     public ModelAndView showEditForm(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("edit_form");
         Pracownik pracownik = dao.get(id);
@@ -55,14 +48,14 @@ public class PracownicyController {
         return mav;
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update_pracownik", method = RequestMethod.POST)
     public String update(@ModelAttribute("pracownik") Pracownik pracownik) {
         dao.update(pracownik);
 
         return "redirect:/";
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/delete_pracownik/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 
