@@ -159,3 +159,8 @@ margin-right: 0.5rem;
 .username {
     text-transform: capitalize;
 }
+
+table {
+    position:relative;
+    z-index: 4;
+}

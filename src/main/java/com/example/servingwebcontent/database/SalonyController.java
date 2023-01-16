@@ -20,8 +20,6 @@ public class SalonyController {
 
     @RequestMapping(value={"/salon"})
     public String showDbPage(Model model) {
-        String text = "Some text to display at view";
-        model.addAttribute("someText", text);
         List<Salon> listSalon = dao.findAll();
         model.addAttribute("listSalon", listSalon);
 

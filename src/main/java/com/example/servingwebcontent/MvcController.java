@@ -33,6 +33,8 @@ public class MvcController implements WebMvcConfigurer {
         registry.addViewController("/new_salon").setViewName("salon/new_salon");
         registry.addViewController("/edit_salon").setViewName("salon/edit_salon");
         registry.addViewController("/save_salon").setViewName("salon/save_save");
+
+        registry.addViewController("/car").setViewName("car/car");
     }
 
     @Controller

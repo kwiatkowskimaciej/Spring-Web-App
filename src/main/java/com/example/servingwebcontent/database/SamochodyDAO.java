@@ -39,7 +39,7 @@ public class SamochodyDAO {
         Samochod samochod = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Samochod.class));
         return samochod;
     }
-    public void update(Samochod samochod) {//zmienić
+    public void update(Samochod samochod) {// TODO: zmienić
         String sql = "UPDATE SAMOCHODY SET nr_samochodu=:nr_samochodu, vin=:vin, rok_produkcji=:rok_produkcji, typ_nadwozia=:typ_nadwozia, rodzaj_silnika=:rodzaj_silnika, typ_napedu=:typ_napedu, moc=:moc, ilosc_osob=:ilosc_osob, poj_bagaznika=:poj_bagaznika, nr_rejestracyjny=:nr_rejestracyjny, kolor=:kolor, cena=:cena, nr_fabryki=:nr_fabryki, nr_salonu=:nr_salonu, nr_klienta=:nr_klienta, nr_modelu=:nr_modelu";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(samochod);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);

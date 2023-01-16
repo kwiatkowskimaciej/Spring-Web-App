@@ -21,7 +21,7 @@
 
     <div class="mb-3">
       <label for="data_zalozenia" class="form-label">Data Założenia</label>
-      <input type="text" class="form-control" id="data_zalozenia" th:field="*{data_zalozenia}" required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" aria-describedby="dataHelp">
+      <input type="date" class="form-control" id="data_zalozenia" th:field="*{data_zalozenia}"  required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" aria-describedby="dataHelp">
       <div id="dataHelp" class="form-text">Data powinna być w formacie yyyy-MM-dd.</div>
     </div>
 

@@ -29,7 +29,7 @@
     <tr th:each = "salon : ${listSalon}">
       <th scope="row" th:text = "${salon.nr_salonu}">#</th>
       <td th:text = "${salon.nazwa}">Nazwa</td>
-      <td th:text = "${salon.data_zalozenia}">Data Zalożenia</td>
+      <td th:text = "${#dates.format(salon.data_zalozenia, 'dd-MM-yyyy')}">Data Zalożenia</td>
       <td th:text = "${salon.nr_adresu}">Numer Adresu</td>
       <td th:text = "${salon.nr_zbioru_telefonow}">Numer Zbioru Telefonów</td>
 

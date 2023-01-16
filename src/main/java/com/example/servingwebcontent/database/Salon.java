@@ -1,15 +1,17 @@
 package com.example.servingwebcontent.database;
 
+import java.util.Date;
+
 public class Salon {
     private int nr_salonu;
     private String nazwa;
-    private String data_zalozenia;
+    private Date data_zalozenia;
     private int nr_adresu;
     private int nr_zbioru_telefonow;
 
     public Salon() {
     }
-    public Salon(int nr_salonu, String nazwa, String data_zalozenia, int nr_adresu, int nr_zbioru_telefonow) {
+    public Salon(int nr_salonu, String nazwa, Date data_zalozenia, int nr_adresu, int nr_zbioru_telefonow) {
         this.nr_salonu = nr_salonu;
         this.nazwa = nazwa;
         this.data_zalozenia = data_zalozenia;
@@ -33,11 +35,11 @@ public class Salon {
         this.nazwa = nazwa;
     }
 
-    public String getData_zalozenia() {
+    public Date getData_zalozenia() {
         return data_zalozenia;
     }
 
-    public void setData_zalozenia(String data_zalozenia) {
+    public void setData_zalozenia(Date data_zalozenia) {
         this.data_zalozenia = data_zalozenia;
     }
 

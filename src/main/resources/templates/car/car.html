@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:insert="~{general :: head (pageTitle='Samochody')}"></head>
+
+<body>
+
+<nav th:replace="~{general :: navbar}"></nav>
+
+<div class="container col-xxl-8 px-4 py-5 article-container">
+  <h1>Samochody</h1>
+  <div sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')">
+    <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new_salon}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nowy samochód</a>
+  </div>
+<!--  <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>-->
+
+  <table class="table table-striped table-dark table-hover table-centered sortable">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">VIN</th>
+      <th scope="col">Rok Produkcji</th>
+      <th scope="col">Model</th>
+      <th scope="col">Typ Nadwozia</th>
+      <th scope="col">Rodzaj Silnika</th>
+      <th scope="col">Moc</th>
+      <th scope="col">Miejsca</th>
+      <th scope="col">Poj. Bagażnika</th>
+      <!--      <th scope="col">Numer Rej.</th>-->
+      <th scope="col">Kolor</th>
+      <th scope="col">Cena</th>
+      <th scope="col">Action</th>
+      <!--      <th scope="col">Numer Fabryki</th>-->
+<!--      <th scope="col">Numer Salonu</th>-->
+<!--      <th scope="col">Numer Klienta</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "s : ${listSamochod}">
+<!--      th:if="${s.nr_klienta == null}"-->
+      <th scope="row" th:text = "${s.nr_samochodu}">#</th>
+      <td th:text = "${s.vin}"></td>
+      <td th:text = "${#dates.format(s.rok_produkcji, 'yyyy')}"></td>
+      <td th:text = "${s.model}"></td>
+      <td th:text = "${s.typ_nadwozia}"></td>
+      <td th:text = "${s.rodzaj_silnika}"></td>
+      <td th:text = "${s.moc}"></td>
+      <td th:text = "${s.ilosc_osob}"></td>
+      <td th:text = "${s.poj_bagaznika}"></td>
+<!--      <td th:text = "${s.nr_rejestracyjny}"></td>-->
+      <td th:text = "${s.kolor}"></td>
+      <td th:text = "${s.cena}"></td>
+<!--      <td th:text = "${s.nr_fabryki}"></td>-->
+<!--      <td th:text = "${s.nr_salonu}"></td>-->
+<!--      <td th:text = "${s.nr_klienta}"></td>-->
+
+      <td>
+        <a sec:authorize="hasRole('CLIENT')" class="edit" href="#"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i>Kup</a>
+        <a sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')" class="edit" href="#"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')" class="delete" href="#"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           data-bs-title="Delete"><i class="fa-solid fa-trash"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div th:replace="~{general :: waves}"></div>
+
+<div th:replace="~{general :: scripts}"></div>
+<script>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+
+</body>
+</html>

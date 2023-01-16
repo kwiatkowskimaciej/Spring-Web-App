@@ -1,9 +1,11 @@
 package com.example.servingwebcontent.database;
 
+import java.util.Date;
+
 public class Samochod {
     private int nr_samochodu;
     private String vin;
-    private String rok_produkcji;
+    private Date rok_produkcji = new Date();
     private String typ_nadwozia;
     private char rodzaj_silnika;
     private String typ_napedu;
@@ -15,13 +17,15 @@ public class Samochod {
     private String cena;
     private int nr_fabryki;
     private int nr_salonu;
-    private int nr_klienta;
+    private String nr_klienta;
     private int nr_modelu;
+
+    private String model;
 
     public Samochod() {
     }
 
-    public Samochod(int nr_samochodu, String vin, String rok_produkcji, String typ_nadwozia, char rodzaj_silnika, String typ_napedu, int moc, int ilosc_osob, int poj_bagaznika, String nr_rejestracyjny, String kolor, String cena, int nr_fabryki, int nr_salonu, int nr_klienta, int nr_modelu) {
+    public Samochod(int nr_samochodu, String vin, Date rok_produkcji, String typ_nadwozia, char rodzaj_silnika, String typ_napedu, int moc, int ilosc_osob, int poj_bagaznika, String nr_rejestracyjny, String kolor, String cena, int nr_fabryki, int nr_salonu, String nr_klienta, int nr_modelu, String model) {
         this.nr_samochodu = nr_samochodu;
         this.vin = vin;
         this.rok_produkcji = rok_produkcji;
@@ -38,7 +42,10 @@ public class Samochod {
         this.nr_salonu = nr_salonu;
         this.nr_klienta = nr_klienta;
         this.nr_modelu = nr_modelu;
+        this.model = model;
     }
+
+
 
     public int getNr_samochodu() {
         return nr_samochodu;
@@ -56,11 +63,11 @@ public class Samochod {
         this.vin = vin;
     }
 
-    public String getRok_produkcji() {
+    public Date getRok_produkcji() {
         return rok_produkcji;
     }
 
-    public void setRok_produkcji(String rok_produkcji) {
+    public void setRok_produkcji(Date rok_produkcji) {
         this.rok_produkcji = rok_produkcji;
     }
 
@@ -152,11 +159,11 @@ public class Samochod {
         this.nr_salonu = nr_salonu;
     }
 
-    public int getNr_klienta() {
+    public String getNr_klienta() {
         return nr_klienta;
     }
 
-    public void setNr_klienta(int nr_klienta) {
+    public void setNr_klienta(String nr_klienta) {
         this.nr_klienta = nr_klienta;
     }
 
@@ -166,6 +173,14 @@ public class Samochod {
 
     public void setNr_modelu(int nr_modelu) {
         this.nr_modelu = nr_modelu;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     @Override
@@ -185,8 +200,9 @@ public class Samochod {
                 ", cena='" + cena + '\'' +
                 ", nr_fabryki=" + nr_fabryki +
                 ", nr_salonu=" + nr_salonu +
-                ", nr_klienta=" + nr_klienta +
+                ", nr_klienta='" + nr_klienta + '\'' +
                 ", nr_modelu=" + nr_modelu +
+                ", model='" + model + '\'' +
                 '}';
     }
 }
