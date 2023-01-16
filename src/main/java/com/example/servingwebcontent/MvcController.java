@@ -26,7 +26,8 @@ public class MvcController implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
 
         registry.addViewController("/main_admin").setViewName("admin/main_admin");
-        registry.addViewController("/main_user").setViewName("user/main_user");
+        registry.addViewController("/main_employee").setViewName("employee/main_employee");
+        registry.addViewController("/main_client").setViewName("client/main_client");
 
         registry.addViewController("/salon").setViewName("salon/salon");
         registry.addViewController("/new_salon").setViewName("salon/new_salon");
@@ -40,8 +41,10 @@ public class MvcController implements WebMvcConfigurer {
         public String defaultAfterLogin(HttpServletRequest request) {
             if (request.isUserInRole("ADMIN")) {
                 return "redirect:/main_admin";
-            } else if (request.isUserInRole("USER")) {
-                return "redirect:/main_user";
+            } else if (request.isUserInRole("EMPLOYEE")) {
+                return "redirect:/main_employee";
+            } else if (request.isUserInRole("CLIENT")) {
+                return "redirect:/main_client";
             } else {
                 return "redirect:/index";
             }
