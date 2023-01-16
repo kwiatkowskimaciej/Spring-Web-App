@@ -17,25 +17,38 @@
           </div>
           <div class="col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">
-              Responsive left-aligned hero with image
+              Szukasz nowego samochodu?
             </h1>
             <p class="lead">
-              Quickly design and customize responsive mobile-first sites with
-              Bootstrap, the world’s most popular front-end open source toolkit,
-              featuring Sass variables and mixins, responsive grid system,
-              extensive prebuilt components, and powerful JavaScript plugins.
+              Mamy na to rozwiązanie! W naszej ofercie znajdziesz samochód idealny dla siebie.
+              Już dziś skorzystaj z bazy danych naszego salonu CarMax i ciesz się nowym autem.
             </p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <div th:remove="tag" sec:authorize="isAuthenticated()">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a
+                        role="button"
+                        class="btn btn-light btn-lg px-4 me-md-2"
+                        th:href="@{/main}"
+                >
+                  <i class="fa-solid fa-house"></i> Twoja strona główna
+                </a>
+              </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start" sec:authorize="isAnonymous()">
               <a
-                role="button"
-                data-bs-toggle="modal"
-                data-bs-target="#sign-up-modal"
-                class="btn btn-light btn-lg px-4 me-md-2"
-                href="#"
+                      role="button"
+                      class="btn btn-light btn-lg px-4 me-md-2"
+                      href="#"
               >
                 <i class="fa-solid fa-user"></i>Sign up
               </a>
-              <a class="btn btn-outline-light btn-lg px-4 me-md-2" th:href="@{/main}" role="button"><i class="fa-solid fa-right-to-bracket"></i>Log in</a>
+              <a
+                      role="button"
+                      class="btn btn-outline-light btn-lg px-4"
+                      th:href="@{/main}"
+              >
+                <i class="fa-solid fa-right-to-bracket"></i>Log in
+              </a>
             </div>
           </div>
         </div>
@@ -73,44 +86,7 @@
       </footer>
     </div>
 
-    <div>
-      <svg
-        class="waves"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 24 150 28"
-        preserveAspectRatio="none"
-        shape-rendering="auto"
-      >
-        <defs>
-          <path
-            id="gentle-wave"
-            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-          />
-        </defs>
-        <g class="parallax">
-          <use
-            xlink:href="#gentle-wave"
-            x="48"
-            y="0"
-            fill="rgba(106,99,246,0.3"
-          />
-          <use
-            xlink:href="#gentle-wave"
-            x="48"
-            y="3"
-            fill="rgba(106,99,246,0.4)"
-          />
-          <use
-            xlink:href="#gentle-wave"
-            x="48"
-            y="5"
-            fill="rgba(106,99,246,0.5)"
-          />
-          <use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(106,99,246)" />
-        </g>
-      </svg>
-    </div>
+    <div th:replace="~{general :: waves}"></div>
 
     <div th:replace="~{general :: scripts}"></div>
   </body>
