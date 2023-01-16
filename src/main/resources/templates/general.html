@@ -44,25 +44,29 @@
                 class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
         >
           <li><a th:href="@{/}" class="nav-link px-2">Home</a></li>
-          <li><a th:href="@{/main}" class="nav-link px-2">Catalog</a></li>
+          <li><a th:href="@{/salon}" class="nav-link px-2">Catalog</a></li>
           <li><a href="#" class="nav-link px-2">About</a></li>
           <li><a href="#" class="nav-link px-2">Contact</a></li>
         </ul>
 
         <div class="text-end">
           <div th:remove="tag" sec:authorize="isAuthenticated()">
-            <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
-                    style="text-transform:capitalize"><span th:remove="tag" sec:authentication="name">thymeleaf</span></b></a>
+            <div class="btn-group menu-button">
+              <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="username"><i class="fa-solid fa-bars"></i><span th:remove="tag" sec:authentication="name">thymeleaf</span></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/salon}">Salon</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li sec:authorize="hasRole('ADMIN')"><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <form method="post" th:action="@{/index}">
+                  <li><a href="javascript:$('form').submit()" class="dropdown-item">Wyloguj</a></li>
+                </form>
+              </ul>
+            </div>
           </div>
           <div th:remove="tag" sec:authorize="isAnonymous()">
-<!--          <button-->
-<!--                  type="button"-->
-<!--                  class="btn btn-outline-light me-2"-->
-<!--                  data-bs-toggle="modal"-->
-<!--                  data-bs-target="#log-in-modal"-->
-<!--          >-->
-<!--            <i class="fa-solid fa-right-to-bracket"></i>Log in-->
-<!--          </button>-->
             <a class="btn btn-outline-light me-2" th:href="@{/main}" role="button"><i class="fa-solid fa-right-to-bracket"></i>Log in</a>
           <button
                   type="button"
@@ -77,68 +81,6 @@
       </div>
     </div>
   </header>
-
-<!--    <nav-->
-<!--      class="navbar navbar-expand-lg navbar-dark bg-transparent static-top"-->
-<!--      th:fragment="navbar"-->
-<!--    >-->
-<!--      <div class="container">-->
-<!--        <a class="navbar-brand" href="#">-->
-<!--          &lt;!&ndash; <img th:src="@{/images/CarMax.png}" alt="Bootstrap" width="300" height="100"> &ndash;&gt;-->
-<!--          Bootstrap-->
-<!--        </a>-->
-<!--        <button-->
-<!--          class="navbar-toggler"-->
-<!--          type="button"-->
-<!--          data-toggle="collapse"-->
-<!--          data-target="#navbarResponsive"-->
-<!--          aria-controls="navbarResponsive"-->
-<!--          aria-expanded="false"-->
-<!--          aria-label="Toggle navigation"-->
-<!--        >-->
-<!--          <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
-<!--        <div class="collapse navbar-collapse" id="navbarResponsive">-->
-<!--          <ul class="navbar-nav ml-auto">-->
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link" th:href="@{/}">Home</a>-->
-<!--            </li>-->
-
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link" th:href="@{/main}">Main</a>-->
-<!--            </li>-->
-
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link" th:href="@{/salon}">Salon</a>-->
-<!--            </li>-->
-
-<!--            <div class="justify-content-md-end">-->
-<!--              <li class="nav-item">-->
-<!--                <div th:remove="tag" sec:authorize="isAuthenticated()">-->
-<!--                  <a-->
-<!--                    class="nav-link"-->
-<!--                    th:inline="text"-->
-<!--                    style="color: lightskyblue"-->
-<!--                    >You are logged in as-->
-<!--                    <b style="text-transform: capitalize"-->
-<!--                      ><span th:remove="tag" sec:authentication="name"-->
-<!--                        >thymeleaf</span-->
-<!--                      ></b-->
-<!--                    ></a-->
-<!--                  >-->
-<!--                </div>-->
-<!--                <div th:remove="tag" sec:authorize="isAnonymous()">-->
-<!--                  <a class="btn btn-sample" th:href="@{/main}" role="button"-->
-<!--                    >Sign in</a-->
-<!--                  >-->
-<!--                  &lt;!&ndash;                        <a class="nav-link" th:href="@{/main}">Login</a>&ndash;&gt;-->
-<!--                </div>-->
-<!--              </li>-->
-<!--            </div>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </nav>-->
 
   <div th:remove="tag" th:fragment="modals">
     <div
@@ -253,15 +195,6 @@
 
           <div class="modal-body p-5 pt-0">
             <form class="" th:method="post" th:action="@{/login}">
-              <!--              <div class="form-floating mb-3">-->
-              <!--                <input-->
-              <!--                  type="email"-->
-              <!--                  class="form-control rounded-3"-->
-              <!--                  id="floatingInput"-->
-              <!--                  placeholder="name@example.com"-->
-              <!--                />-->
-              <!--                <label for="floatingInput">Email address</label>-->
-              <!--              </div>-->
               <div class="form-floating mb-3">
                 <input
                         type="text"
@@ -331,6 +264,47 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div th:remove="tag" th:fragment="waves">
+  <div>
+    <svg
+            class="waves"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28"
+            preserveAspectRatio="none"
+            shape-rendering="auto"
+    >
+      <defs>
+        <path
+                id="gentle-wave"
+                d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+        />
+      </defs>
+      <g class="parallax">
+        <use
+                xlink:href="#gentle-wave"
+                x="48"
+                y="0"
+                fill="rgba(106,99,246,0.3"
+        />
+        <use
+                xlink:href="#gentle-wave"
+                x="48"
+                y="3"
+                fill="rgba(106,99,246,0.4)"
+        />
+        <use
+                xlink:href="#gentle-wave"
+                x="48"
+                y="5"
+                fill="rgba(106,99,246,0.5)"
+        />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(106,99,246)" />
+      </g>
+    </svg>
+  </div>
   </div>
 
     <div th:remove="tag" th:fragment="scripts">
