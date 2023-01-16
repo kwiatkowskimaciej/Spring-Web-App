@@ -2,7 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-<head th:insert="~{general :: head (pageTitle='Main Admin Page')}"></head>
+<head th:insert="~{general :: head (pageTitle='Main Employee Page')}"></head>
 
 <body>
 
@@ -16,15 +16,15 @@
             </div>
             <div class="col-lg-6">
                 <h1 class="display-5 fw-bold lh-1 mb-3">
-                    Witaj na stronie głównej administratorze!
+                    Witaj na stronie głównej pracowniku!
                 </h1>
                 <p class="lead">
-                   Aby skorzystać z bazy danych użyj menu z prawej strony. Jeśli chcesz się wylogować naciśnij przycisk "Wyloguj" pod tym tekstem.
+                    Aby skorzystać z bazy danych użyj menu z prawej strony. Jeśli chcesz się wylogować naciśnij przycisk "Wyloguj" pod tym tekstem.
                 </p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                     <form method="post" th:action="@{/index}">
-                    <button class="btn btn-light btn-lg px-4 me-md-2" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj
-                    </button>
+                        <button class="btn btn-light btn-lg px-4 me-md-2" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj
+                        </button>
                     </form>
                 </div>
             </div>

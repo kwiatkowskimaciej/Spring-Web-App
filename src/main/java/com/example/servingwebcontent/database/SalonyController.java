@@ -4,10 +4,13 @@ import com.example.servingwebcontent.registration.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Controller
@@ -34,9 +37,13 @@ public class SalonyController {
 
     @RequestMapping(value = "/save_salon", method = RequestMethod.POST)
     public String save(@ModelAttribute("salon") Salon salon) {
-        dao.save(salon);
+        try {
+            dao.save(salon);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
 
-        return "redirect:/";
+        return "redirect:/salon";
     }
 
     @RequestMapping("/edit_salon/{id}")
@@ -50,16 +57,20 @@ public class SalonyController {
 
     @RequestMapping(value = "/update_salon", method = RequestMethod.POST)
     public String update(@ModelAttribute("salon") Salon salon) {
-        dao.update(salon);
+        try {
+            dao.update(salon);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
 
-        return "redirect:/";
+        return "redirect:/salon";
     }
 
     @RequestMapping("/delete_salon/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 
-        return "redirect:/";
+        return "redirect:/salon";
     }
 }
 

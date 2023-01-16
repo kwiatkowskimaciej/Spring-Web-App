@@ -22,8 +22,9 @@ public class WebSecurityConfig {
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/webjars/**").permitAll()
                         .requestMatchers("/main").authenticated()
-                        .requestMatchers("/main_admin", "/new").hasRole("ADMIN")
-                        .requestMatchers("/main_user").hasRole("USER")
+                        .requestMatchers("/main_admin", "/salon", "/new_salon", "/edit_salon", "/save_salon").hasRole("ADMIN")
+                        .requestMatchers("/main_employee").hasRole("EMPLOYEE")
+                        .requestMatchers("/main_client").hasRole("CLIENT")
                         .anyRequest().permitAll()
                 )
                 .formLogin((form) -> form
@@ -41,19 +42,25 @@ public class WebSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user =
+        UserDetails klient =
                 User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
-                        .roles("USER")
+                        .username("client")
+                        .password("client")
+                        .roles("CLIENT")
+                        .build();
+        UserDetails pracownik =
+                User.withDefaultPasswordEncoder()
+                        .username("employee")
+                        .password("employee")
+                        .roles("EMPLOYEE")
                         .build();
         UserDetails admin =
                 User.withDefaultPasswordEncoder()
                         .username("admin")
-                        .password("password")
+                        .password("admin")
                         .roles("ADMIN")
                         .build();
 
-        return new InMemoryUserDetailsManager(user, admin);
+        return new InMemoryUserDetailsManager(klient, pracownik, admin);
     }
 }

@@ -155,3 +155,7 @@ margin-right: 0.5rem;
 .modal {
     color: black;
 }
+
+.username {
+    text-transform: capitalize;
+}
