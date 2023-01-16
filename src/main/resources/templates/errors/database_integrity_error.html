@@ -13,13 +13,13 @@
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">
-          504
+          Naruszono więzy spójności bazy danych
         </h1>
         <p class="lead">
-          Gateway tiemout
+          Kliknij poniższy przycisk aby wrócić do formularza. Pamiętaj aby wpisać poprawne dane.
         </p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <a class="btn btn-light btn-lg px-4 me-md-2" th:href="@{/index}" role="button"><i class="fa-solid fa-right-to-bracket"></i>Powrót do strony głównej</a>
+          <button class="btn btn-light btn-lg px-4 me-md-2" onclick="backButton()">Powrót</button>
         </div>
       </div>
     </div>
@@ -30,5 +30,12 @@
 
 <div th:replace="~{general :: scripts}"></div>
 
+<script>
+function backButton() {
+
+window.history.back();
+
+}
+</script>
 </body>
 </html>

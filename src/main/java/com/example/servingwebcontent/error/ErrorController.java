@@ -21,6 +21,9 @@ public class ErrorController {
     public String internal(Model model) {
         return "errors/500";
     }
+
+    @GetMapping("/database_integrity_error")
+    public String integrity(Model model) { return "errors/database_integrity_error"; }
 //
 //    @GetMapping("/access-denied")
 //    public String accessDenied() {
