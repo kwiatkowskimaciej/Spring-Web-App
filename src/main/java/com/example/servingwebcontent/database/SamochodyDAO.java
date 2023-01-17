@@ -35,7 +35,7 @@ public class SamochodyDAO {
     }
     public Samochod get(int id) {
         Object[] args = {id};
-        String sql = "SELECT * FROM SAMOCHODY s LEFT OUTER JOIN MODELE m ON s.nr_modelu = n.nr_modelu WHERE nr_samochodu = " + args[0];
+        String sql = "SELECT * FROM SAMOCHODY s LEFT OUTER JOIN MODELE m ON s.nr_modelu = m.nr_modelu WHERE nr_samochodu = " + args[0];
         Samochod samochod = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Samochod.class));
         return samochod;
     }

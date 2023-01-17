@@ -1,10 +1,13 @@
 package com.example.servingwebcontent.database;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Salon {
     private int nr_salonu;
     private String nazwa;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date data_zalozenia;
     private int nr_adresu;
     private int nr_zbioru_telefonow;

@@ -1,11 +1,14 @@
 package com.example.servingwebcontent.database;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Samochod {
     private int nr_samochodu;
     private String vin;
-    private Date rok_produkcji = new Date();
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date rok_produkcji;
     private String typ_nadwozia;
     private char rodzaj_silnika;
     private String typ_napedu;
@@ -20,12 +23,12 @@ public class Samochod {
     private String nr_klienta;
     private int nr_modelu;
 
-    private String model;
+//    private String model;
 
     public Samochod() {
     }
 
-    public Samochod(int nr_samochodu, String vin, Date rok_produkcji, String typ_nadwozia, char rodzaj_silnika, String typ_napedu, String moc, String ilosc_osob, String poj_bagaznika, String nr_rejestracyjny, String kolor, String cena, int nr_fabryki, int nr_salonu, String nr_klienta, int nr_modelu, String model) {
+    public Samochod(int nr_samochodu, String vin, Date rok_produkcji, String typ_nadwozia, char rodzaj_silnika, String typ_napedu, String moc, String ilosc_osob, String poj_bagaznika, String nr_rejestracyjny, String kolor, String cena, int nr_fabryki, int nr_salonu, String nr_klienta, int nr_modelu) {
         this.nr_samochodu = nr_samochodu;
         this.vin = vin;
         this.rok_produkcji = rok_produkcji;
@@ -42,7 +45,7 @@ public class Samochod {
         this.nr_salonu = nr_salonu;
         this.nr_klienta = nr_klienta;
         this.nr_modelu = nr_modelu;
-        this.model = model;
+//        this.model = model;
     }
 
 
@@ -174,14 +177,14 @@ public class Samochod {
     public void setNr_modelu(int nr_modelu) {
         this.nr_modelu = nr_modelu;
     }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
+//
+//    public String getModel() {
+//        return model;
+//    }
+//
+//    public void setModel(String model) {
+//        this.model = model;
+//    }
 
     @Override
     public String toString() {
@@ -202,7 +205,7 @@ public class Samochod {
                 ", nr_salonu=" + nr_salonu +
                 ", nr_klienta='" + nr_klienta + '\'' +
                 ", nr_modelu=" + nr_modelu +
-                ", model='" + model + '\'' +
+//                ", model='" + model + '\'' +
                 '}';
     }
 }

@@ -1,46 +1,43 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head th:insert="~{general :: head (pageTitle='Edit Salon')}"></head>
+<head th:insert="~{general :: head (pageTitle='Dodaj salon')}"></head>
 <body>
 <nav th:replace="~{general :: navbar}"> </nav>
 
 <div class="container col-xxl-8 px-4 py-5 article-container">
-  <h1>Edit salon</h1>
+  <h1>Nowy salon</h1>
 
-  <form class="database-form" action="#" th:action="@{/update_salon}" th:object="${salon}" method="post">
+  <form class="database-form" action="#" th:action="@{/save_salon}" th:object="${salon}" method="post">
     <div class="mb-3">
       <label for="NumerSalonu" class="form-label">Numer Salonu</label>
-      <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{nr_salonu}" readonly="readonly">
-<!--      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+      <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{nr_salonu}" required>
+      <!--        <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
     </div>
 
     <div class="mb-3">
       <label for="Nazwa" class="form-label">Nazwa</label>
-      <input type="text" class="form-control" id="Nazwa" th:field="*{nazwa}">
+      <input type="text" class="form-control" id="Nazwa" th:field="*{nazwa}" required>
     </div>
 
     <div class="mb-3">
       <label for="data_zalozenia" class="form-label">Data Założenia</label>
-      <input type="date" class="form-control" id="data_zalozenia" th:field="*{data_zalozenia}"  required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" aria-describedby="dataHelp">
-      <div id="dataHelp" class="form-text">Data powinna być w formacie yyyy-MM-dd.</div>
+      <input type="date" class="form-control" id="data_zalozenia" th:field="*{data_zalozenia}" required>
     </div>
 
     <div class="mb-3">
       <label for="nr_adresu" class="form-label">Numer Adresu</label>
-      <input type="text" class="form-control" id="nr_adresu" th:field="*{nr_adresu}">
+      <input type="text" class="form-control" id="nr_adresu" th:field="*{nr_adresu}" required>
     </div>
 
     <div class="mb-3">
       <label for="nr_zbioru_telefonow" class="form-label">Numer Zbioru Telefonów</label>
-      <input type="text" class="form-control" id="nr_zbioru_telefonow" th:field="*{nr_zbioru_telefonow}">
+      <input type="text" class="form-control" id="nr_zbioru_telefonow" th:field="*{nr_zbioru_telefonow}" required>
     </div>
 
-    <div th:if="${param.error}" style="color:red; margin-bottom:15px">
-      ERROR: Invalid parameters!
-    </div>
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
     <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
-    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">Submit</button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">Submit</button>
 
     <!-- Modal -->
     <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -13,15 +13,18 @@
   <div sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')">
     <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new_salon}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nowy samochód</a>
   </div>
+    <div sec:authorize="isAnonymous()" style="margin-bottom: 1rem">
+        <a th:href="@{/login}">Zaloguj się</a> aby kupić samochód
+    </div>
 <!--  <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>-->
 
   <table class="table table-striped table-dark table-hover table-centered sortable">
     <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">VIN</th>
+<!--      <th scope="col">VIN</th>-->
       <th scope="col">Rok Produkcji</th>
-      <th scope="col">Model</th>
+<!--      <th scope="col">Model</th>-->
       <th scope="col">Typ Nadwozia</th>
       <th scope="col">Rodzaj Silnika</th>
       <th scope="col">Moc</th>
@@ -30,7 +33,8 @@
       <!--      <th scope="col">Numer Rej.</th>-->
       <th scope="col">Kolor</th>
       <th scope="col">Cena</th>
-      <th scope="col">Action</th>
+        <th scope="col">Stan</th>
+      <th scope="col" sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE', 'CLIENT')">Action</th>
       <!--      <th scope="col">Numer Fabryki</th>-->
 <!--      <th scope="col">Numer Salonu</th>-->
 <!--      <th scope="col">Numer Klienta</th>-->
@@ -40,9 +44,9 @@
     <tr th:each = "s : ${listSamochod}">
 <!--      th:if="${s.nr_klienta == null}"-->
       <th scope="row" th:text = "${s.nr_samochodu}">#</th>
-      <td th:text = "${s.vin}"></td>
+<!--      <td th:text = "${s.vin}"></td>-->
       <td th:text = "${#dates.format(s.rok_produkcji, 'yyyy')}"></td>
-      <td th:text = "${s.model}"></td>
+<!--      <td th:text = "${s.model}"></td>-->
       <td th:text = "${s.typ_nadwozia}"></td>
       <td th:text = "${s.rodzaj_silnika}"></td>
       <td th:text = "${s.moc}"></td>
@@ -55,12 +59,14 @@
 <!--      <td th:text = "${s.nr_salonu}"></td>-->
 <!--      <td th:text = "${s.nr_klienta}"></td>-->
 
-      <td>
+        <td><span style="color: green" th:if="${s.nr_klienta == null}">Na sprzedaż</span><span style="color: red" th:if="${s.nr_klienta != null}">Sprzedany</span></td>
+      <td sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE', 'CLIENT')">
         <a sec:authorize="hasRole('CLIENT')" class="edit" href="#"
            data-bs-toggle="tooltip"
            data-bs-placement="top"
-           data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i>Kup</a>
-        <a sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')" class="edit" href="#"
+           data-bs-title="Kup"
+           th:if="${s.nr_klienta == null}"><i class="fa-solid fa-cart-shopping"></i>Kup</a>
+        <a sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')" class="edit" th:href="@{'/edit_car/' + ${s.nr_samochodu}}"
            data-bs-toggle="tooltip"
            data-bs-placement="top"
            data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
