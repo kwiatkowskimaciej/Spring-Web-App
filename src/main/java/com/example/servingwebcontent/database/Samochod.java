@@ -9,9 +9,9 @@ public class Samochod {
     private String typ_nadwozia;
     private char rodzaj_silnika;
     private String typ_napedu;
-    private int moc;
-    private int ilosc_osob;
-    private int poj_bagaznika;
+    private String moc;
+    private String ilosc_osob;
+    private String poj_bagaznika;
     private String nr_rejestracyjny;
     private String kolor;
     private String cena;
@@ -25,7 +25,7 @@ public class Samochod {
     public Samochod() {
     }
 
-    public Samochod(int nr_samochodu, String vin, Date rok_produkcji, String typ_nadwozia, char rodzaj_silnika, String typ_napedu, int moc, int ilosc_osob, int poj_bagaznika, String nr_rejestracyjny, String kolor, String cena, int nr_fabryki, int nr_salonu, String nr_klienta, int nr_modelu, String model) {
+    public Samochod(int nr_samochodu, String vin, Date rok_produkcji, String typ_nadwozia, char rodzaj_silnika, String typ_napedu, String moc, String ilosc_osob, String poj_bagaznika, String nr_rejestracyjny, String kolor, String cena, int nr_fabryki, int nr_salonu, String nr_klienta, int nr_modelu, String model) {
         this.nr_samochodu = nr_samochodu;
         this.vin = vin;
         this.rok_produkcji = rok_produkcji;
@@ -95,27 +95,27 @@ public class Samochod {
         this.typ_napedu = typ_napedu;
     }
 
-    public int getMoc() {
+    public String getMoc() {
         return moc;
     }
 
-    public void setMoc(int moc) {
+    public void setMoc(String moc) {
         this.moc = moc;
     }
 
-    public int getIlosc_osob() {
+    public String getIlosc_osob() {
         return ilosc_osob;
     }
 
-    public void setIlosc_osob(int ilosc_osob) {
+    public void setIlosc_osob(String ilosc_osob) {
         this.ilosc_osob = ilosc_osob;
     }
 
-    public int getPoj_bagaznika() {
+    public String getPoj_bagaznika() {
         return poj_bagaznika;
     }
 
-    public void setPoj_bagaznika(int poj_bagaznika) {
+    public void setPoj_bagaznika(String poj_bagaznika) {
         this.poj_bagaznika = poj_bagaznika;
     }
 
