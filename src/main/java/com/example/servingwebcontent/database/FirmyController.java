@@ -11,52 +11,52 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class KlienciController {
+public class FirmyController {
 
     @Autowired
-    private KlienciDAO dao;
+    private FirmyDAO dao;
 
-    @RequestMapping(value={"/klient"})
+    @RequestMapping(value={"/firma"})
     public String showDbPage(Model model) {
         String text = "Some text to display at view";
         model.addAttribute("someText", text);
-        List<Klient> listKlient = dao.findAll();
-        model.addAttribute("listKlient", listKlient);
+        List<Firma> listFirma = dao.findAll();
+        model.addAttribute("listFirma", listFirma);
 
-        return "klient/klient";}
+        return "firma/firma";}
 
-    @GetMapping("/new_klient")
+    @GetMapping("/new_firma")
     public String showNewForm(Model model) {
-        Klient klient = new Klient();
-        model.addAttribute("klient", klient);
+        Firma firma = new Firma();
+        model.addAttribute("firma",firma);
 
-        return "klient/new_klient";
+        return "firma/new_firma";
     }
 
-    @RequestMapping(value = "/save_klient", method = RequestMethod.POST)
-    public String save(@ModelAttribute("klient") Klient klient) {
-        dao.save(klient);
+    @RequestMapping(value = "/save_firma", method = RequestMethod.POST)
+    public String save(@ModelAttribute("firma") Firma firma) {
+        dao.save(firma);
 
         return "redirect:/";
     }
 
-    @RequestMapping("/edit_klient/{id}")
+    @RequestMapping("/edit_firma/{id}")
     public ModelAndView showEditForm(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("klient/edit_klient");
-        Klient klient = dao.get(id);
-        mav.addObject("klient", klient);
+        ModelAndView mav = new ModelAndView("firma/edit_firma");
+        Firma firma = dao.get(id);
+        mav.addObject("firma", firma);
 
         return mav;
     }
 
-    @RequestMapping(value = "/update_klient", method = RequestMethod.POST)
-    public String update(@ModelAttribute("klient") Klient klient) {
-        dao.update(klient);
+    @RequestMapping(value = "/update_firma", method = RequestMethod.POST)
+    public String update(@ModelAttribute("firma") Firma firma) {
+        dao.update(firma);
 
         return "redirect:/";
     }
 
-    @RequestMapping("/delete_klient/{id}")
+    @RequestMapping("/delete_firma/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 

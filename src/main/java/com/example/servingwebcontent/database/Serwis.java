@@ -6,18 +6,18 @@ public class Serwis {
     private int liczba_stanowisk;
     private int nr_salonu;
     private int nr_adresu;
-    private int nr_zbioru_telefonow;
+    private int nr_zbiorow_telefonow;
 
     public Serwis() {
     }
 
-    public Serwis(int nr_serwisu, String nazwa, int liczba_stanowisk, int nr_salonu, int nr_adresu, int nr_zbioru_telefonow) {
+    public Serwis(int nr_serwisu, String nazwa, int liczba_stanowisk, int nr_salonu, int nr_adresu, int nr_zbiorow_telefonow) {
         this.nr_serwisu = nr_serwisu;
         this.nazwa = nazwa;
         this.liczba_stanowisk = liczba_stanowisk;
         this.nr_salonu = nr_salonu;
         this.nr_adresu = nr_adresu;
-        this.nr_zbioru_telefonow = nr_zbioru_telefonow;
+        this.nr_zbiorow_telefonow = nr_zbiorow_telefonow;
     }
 
     public int getNr_serwisu() {
@@ -60,12 +60,12 @@ public class Serwis {
         this.nr_adresu = nr_adresu;
     }
 
-    public int getNr_zbioru_telefonow() {
-        return nr_zbioru_telefonow;
+    public int getNr_zbiorow_telefonow() {
+        return nr_zbiorow_telefonow;
     }
 
-    public void setNr_zbioru_telefonow(int nr_zbioru_telefonow) {
-        this.nr_zbioru_telefonow = nr_zbioru_telefonow;
+    public void setNr_zbiorow_telefonow(int nr_zbiorow_telefonow) {
+        this.nr_zbiorow_telefonow = nr_zbiorow_telefonow;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Serwis {
                 ", liczba_stanowisk=" + liczba_stanowisk +
                 ", nr_salonu=" + nr_salonu +
                 ", nr_adresu=" + nr_adresu +
-                ", nr_zbioru_telefonow=" + nr_zbioru_telefonow +
+                ", nr_zbiorow_telefonow=" + nr_zbiorow_telefonow +
                 '}';
     }
 }

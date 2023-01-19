@@ -31,7 +31,7 @@ public class TelefonyDAO {
     }
     public Telefon get(int id) {
         Object[] args = {id};
-        String sql = "SELECT * FROM TELEFONY WHERE nr_serwisu = " + args[0];
+        String sql = "SELECT * FROM TELEFONY WHERE nr_zbioru_telefonow = " + args[0];
         Telefon telefon = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Telefon.class));
         return telefon;
     }
@@ -43,7 +43,7 @@ public class TelefonyDAO {
         template.update(sql, param);
     }
     public void delete(int id) {
-        String sql = "DELETE FROM TELEFONY WHERE nr_serwisu = ?";
+        String sql = "DELETE FROM TELEFONY WHERE nr_zbioru_telefonow = ?";
         jdbcTemplate.update(sql, id);
     }
 

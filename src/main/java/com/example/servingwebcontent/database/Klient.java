@@ -9,13 +9,13 @@ public class Klient {
     private String e_mail;
     private String nr_adresu;
     private String nr_zbioru_telefonow;
-    private String nr_salonu;
+    private int nr_salonu;
 
     public Klient() {
 
     }
 
-    public Klient(int nr_klienta, String imie, String nazwisko, char plec, String nr_konta, String e_mail, String nr_adresu, String nr_zbioru_telefonow, String nr_salonu) {
+    public Klient(int nr_klienta, String imie, String nazwisko, char plec, String nr_konta, String e_mail, String nr_adresu, String nr_zbioru_telefonow, int nr_salonu) {
         this.nr_klienta = nr_klienta;
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -91,11 +91,11 @@ public class Klient {
         this.nr_zbioru_telefonow = nr_zbioru_telefonow;
     }
 
-    public String getNr_salonu() {
+    public int getNr_salonu() {
         return nr_salonu;
     }
 
-    public void setNr_salonu(String nr_salonu) {
+    public void setNr_salonu(int nr_salonu) {
         this.nr_salonu = nr_salonu;
     }
 

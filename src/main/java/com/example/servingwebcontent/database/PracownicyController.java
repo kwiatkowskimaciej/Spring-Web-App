@@ -12,6 +12,7 @@ import java.util.List;
 
 @Controller
 public class PracownicyController {
+
     @Autowired
     private PracownicyDAO dao;
 
@@ -22,14 +23,14 @@ public class PracownicyController {
         List<Pracownik> listPracownik = dao.findAll();
         model.addAttribute("listPracownik", listPracownik);
 
-        return "pracownik";}
+        return "pracownik/pracownik";}
 
     @GetMapping("/new_pracownik")
     public String showNewForm(Model model) {
         Pracownik pracownik = new Pracownik();
         model.addAttribute("pracownik",pracownik);
 
-        return "new_form";
+        return "pracownik/new_pracownik";
     }
 
     @RequestMapping(value = "/save_pracownik", method = RequestMethod.POST)
@@ -41,7 +42,7 @@ public class PracownicyController {
 
     @RequestMapping("/edit_pracownik/{id}")
     public ModelAndView showEditForm(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("edit_form");
+        ModelAndView mav = new ModelAndView("pracownik/edit_pracownik");
         Pracownik pracownik = dao.get(id);
         mav.addObject("pracownik", pracownik);
 

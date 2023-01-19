@@ -18,10 +18,6 @@ public class SamochodyDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-//    public SalonyDAO(JdbcTemplate jdbcTemplate) {
-//        this.jdbcTemplate = jdbcTemplate;
-//    }
-
     public List<Samochod> findAll(){
         String sql = "SELECT * from SAMOCHODY s LEFT OUTER JOIN MODELE m ON s.nr_modelu = m.nr_modelu";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Samochod.class));

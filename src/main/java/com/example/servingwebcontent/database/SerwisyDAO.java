@@ -31,7 +31,7 @@ public class SerwisyDAO {
     }
     public Serwis get(int id) {
         Object[] args = {id};
-        String sql = "SELECT * FROM SERWISY s LEFT JOIN ADRESY a ON s.nr_adresu = a.nr_adresu LEFT JOIN TELEFONY t ON s.nr_zbioru_telefonow = t.nr_zbiorow_telefonow WHERE nr_serwisu = " + args[0];
+        String sql = "SELECT * FROM SERWISY s LEFT JOIN ADRESY a ON s.nr_adresu = a.nr_adresu LEFT JOIN TELEFONY t ON s.nr_zbiorow_telefonow = t.nr_zbioru_telefonow WHERE nr_serwisu = " + args[0];
         Serwis serwis = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Serwis.class));
         return serwis;
     }

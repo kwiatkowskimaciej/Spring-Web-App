@@ -31,7 +31,7 @@ public class KlienciDAO {
     }
     public Klient get(int id) {
         Object[] args = {id};
-        String sql = "SELECT * FROM KLIENCI k LEFT JOIN ADRESY a ON k.nr_adresu = a.nr_adresu LEFT JOIN TELEFONY t ON k.nr_zbioru_telefonow = t.nr_zbioru_telefonow WHERE nr_serwisu = " + args[0];
+        String sql = "SELECT * FROM KLIENCI k LEFT JOIN ADRESY a ON k.nr_adresu = a.nr_adresu LEFT JOIN TELEFONY t ON k.nr_zbioru_telefonow = t.nr_zbioru_telefonow WHERE nr_klienta = " + args[0];
         Klient klient = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Klient.class));
         return klient;
     }
@@ -43,7 +43,7 @@ public class KlienciDAO {
         template.update(sql, param);
     }
     public void delete(int id) {
-        String sql = "DELETE FROM KLIENCI WHERE nr_serwisu = ?";
+        String sql = "DELETE FROM KLIENCI WHERE nr_klienta = ?";
         jdbcTemplate.update(sql, id);
     }
 

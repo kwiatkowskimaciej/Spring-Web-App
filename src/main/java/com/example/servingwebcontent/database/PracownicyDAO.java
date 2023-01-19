@@ -18,12 +18,8 @@ public class PracownicyDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-//    public SalonyDAO(JdbcTemplate jdbcTemplate) {
-//        this.jdbcTemplate = jdbcTemplate;
-//    }
-
     public List<Pracownik> findAll(){
-        String sql = "SELECT * from PRACOWNICY p LEFT OUTER JOIN ADRESY a ON p.nr_adresu = a.nr_adresu LEFT OUTER JOIN TELEFONY t ON p.nr_zbioru_telefonow = t.nr_zbioru_telefonow";
+        String sql = "SELECT * from PRACOWNICY p LEFT OUTER JOIN ADRESY a ON p.nr_adresu = a.nr_adresu LEFT OUTER JOIN TELEFONY t ON p.nr_zbioru_telefonow = t.nr_zbioru_telefonow NATURAL JOIN STANOWISKA";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Pracownik.class));
     }
     public void save(Pracownik pracownik) {
@@ -35,7 +31,7 @@ public class PracownicyDAO {
     }
     public Pracownik get(int id) {
         Object[] args = {id};
-        String sql = "SELECT * FROM PRACOWNICY p LEFT OUTER JOIN ADRESY a ON p.nr_adresu = a.nr_adresu LEFT OUTER JOIN TELEFONY t ON p.nr_zbioru_telefonow = t.nr_zbioru_telefonow WHERE nr_pracownika = " + args[0];
+        String sql = "SELECT * FROM PRACOWNICY p LEFT OUTER JOIN ADRESY a ON p.nr_adresu = a.nr_adresu LEFT OUTER JOIN TELEFONY t ON p.nr_zbioru_telefonow = t.nr_zbioru_telefonow NATURAL JOIN STANOWISKA WHERE nr_pracownika = " + args[0];
         Pracownik pracownik = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Pracownik.class));
         return pracownik;
     }
@@ -47,7 +43,7 @@ public class PracownicyDAO {
         template.update(sql, param);
     }
     public void delete(int id) {
-        String sql = "DELETE FROM PRACOWNICY WHERE nr_salonu = ?";
+        String sql = "DELETE FROM PRACOWNICY WHERE nr_pracownika = ?";
         jdbcTemplate.update(sql, id);
     }
 }

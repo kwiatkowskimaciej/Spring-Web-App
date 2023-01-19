@@ -18,10 +18,6 @@ public class SalonyDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-//    public SalonyDAO(JdbcTemplate jdbcTemplate) {
-//        this.jdbcTemplate = jdbcTemplate;
-//    }
-
     public List<Salon> findAll(){
         String sql = "SELECT * from SALONY_SAMOCHODOWE";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Salon.class));

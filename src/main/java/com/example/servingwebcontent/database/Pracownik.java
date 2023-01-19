@@ -1,13 +1,19 @@
 package com.example.servingwebcontent.database;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class Pracownik {
     private int nr_pracownika;
     private String imie;
     private String nazwisko;
-    private String data_urodzenia;
+    @DateTimeFormat (pattern = "yyyy-MM-dd")
+    private Date data_urodzenia;
     private char plec;
     private String pesel;
-    private String data_zatrudnienia;
+    @DateTimeFormat (pattern = "yyyy-MM-dd")
+    private Date data_zatrudnienia;
     private String nr_konta;
     private String e_mail;
     private int nr_salonu;
@@ -18,7 +24,7 @@ public class Pracownik {
 
     public Pracownik(){
     }
-    public Pracownik(int nr_pracownika, String imie, String nazwisko, String data_urodzenia, char plec, String pesel, String data_zatrudnienia, String nr_konta, String e_mail, int nr_salonu, int nr_serwisu, int nr_adresu, int nr_zbioru_telefonow, int nr_stanowiska) {
+    public Pracownik(int nr_pracownika, String imie, String nazwisko, Date data_urodzenia, char plec, String pesel, Date data_zatrudnienia, String nr_konta, String e_mail, int nr_salonu, int nr_serwisu, int nr_adresu, int nr_zbioru_telefonow, int nr_stanowiska) {
         this.nr_pracownika = nr_pracownika;
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -59,11 +65,11 @@ public class Pracownik {
         this.nazwisko = nazwisko;
     }
 
-    public String getData_urodzenia() {
+    public Date getData_urodzenia() {
         return data_urodzenia;
     }
 
-    public void setData_urodzenia(String data_urodzenia) {
+    public void setData_urodzenia(Date data_urodzenia) {
         this.data_urodzenia = data_urodzenia;
     }
 
@@ -83,11 +89,11 @@ public class Pracownik {
         this.pesel = pesel;
     }
 
-    public String getData_zatrudnienia() {
+    public Date getData_zatrudnienia() {
         return data_zatrudnienia;
     }
 
-    public void setData_zatrudnienia(String data_zatrudnienia) {
+    public void setData_zatrudnienia(Date data_zatrudnienia) {
         this.data_zatrudnienia = data_zatrudnienia;
     }
 

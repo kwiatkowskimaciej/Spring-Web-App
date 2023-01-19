@@ -12,8 +12,8 @@ public class Samochod {
     private String typ_nadwozia;
     private char rodzaj_silnika;
     private String typ_napedu;
-    private String moc;
-    private String ilosc_osob;
+    private int moc;
+    private int ilosc_osob;
     private String poj_bagaznika;
     private String nr_rejestracyjny;
     private String kolor;
@@ -28,7 +28,7 @@ public class Samochod {
     public Samochod() {
     }
 
-    public Samochod(int nr_samochodu, String vin, Date rok_produkcji, String typ_nadwozia, char rodzaj_silnika, String typ_napedu, String moc, String ilosc_osob, String poj_bagaznika, String nr_rejestracyjny, String kolor, String cena, int nr_fabryki, int nr_salonu, String nr_klienta, int nr_modelu) {
+    public Samochod(int nr_samochodu, String vin, Date rok_produkcji, String typ_nadwozia, char rodzaj_silnika, String typ_napedu, int moc, int ilosc_osob, String poj_bagaznika, String nr_rejestracyjny, String kolor, String cena, int nr_fabryki, int nr_salonu, String nr_klienta, int nr_modelu) {
         this.nr_samochodu = nr_samochodu;
         this.vin = vin;
         this.rok_produkcji = rok_produkcji;
@@ -98,19 +98,19 @@ public class Samochod {
         this.typ_napedu = typ_napedu;
     }
 
-    public String getMoc() {
+    public int getMoc() {
         return moc;
     }
 
-    public void setMoc(String moc) {
+    public void setMoc(int moc) {
         this.moc = moc;
     }
 
-    public String getIlosc_osob() {
+    public int getIlosc_osob() {
         return ilosc_osob;
     }
 
-    public void setIlosc_osob(String ilosc_osob) {
+    public void setIlosc_osob(int ilosc_osob) {
         this.ilosc_osob = ilosc_osob;
     }
 
