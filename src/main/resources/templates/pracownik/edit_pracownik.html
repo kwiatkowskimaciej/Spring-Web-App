@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{general :: head (pageTitle='Edit Pracownik')}"></head>
+<body>
+<nav th:replace="~{general :: navbar}"> </nav>
+
+<div class="container col-xxl-8 px-4 py-5 article-container">
+    <h1>Edytuj Pracownika</h1>
+    <form class="database-form" action="#" th:action="@{/update_pracownik}" th:object="${pracownik}" method="post">
+
+        <div class="mb-3">
+            <label for="NumerSalonu" class="form-label">Numer Pracownika</label>
+            <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{nr_pracownika}" readonly="readonly">
+            <!--      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+        </div>
+
+        <div class="mb-3">
+            <label for="Nazwa" class="form-label">Imię</label>
+            <input type="text" class="form-control" id="Nazwa" th:field="*{imie}">
+        </div>
+
+
+        <div class="mb-3">
+            <label for="nazwisko" class="form-label">Nazwisko</label>
+            <input type="text" class="form-control" id="nazwisko" th:field="*{nazwisko}">
+        </div>
+
+
+        <div class="mb-3">
+            <label for="data_zalozenia" class="form-label">Data Urodzenia</label>
+            <input type="date" class="form-control" id="data_zalozenia" th:field="*{data_urodzenia}"  required aria-describedby="dataHelp">
+            <div id="dataHelp" class="form-text">Data powinna być w formacie yyyy-MM-dd.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="plec" class="form-label">Płeć</label>
+            <input type="text" class="form-control" id="plec" th:field="*{plec}">
+        </div>
+
+        <div class="mb-3">
+            <label for="pesel" class="form-label">Pesel</label>
+            <input type="text" class="form-control" id="pesel" th:field="*{pesel}">
+        </div>
+
+        <div class="mb-3">
+            <label for="dataZatrudnienia" class="form-label">Data Zatrudnienia</label>
+            <input type="date" class="form-control" id="dataZatrudnienia" th:field="*{data_zatrudnienia}"  required aria-describedby="zatHelp">
+            <div id="zatHelp" class="form-text">Data powinna być w formacie yyyy-MM-dd.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="numerKonta" class="form-label">Numer Konta</label>
+            <input type="text" class="form-control" id="numerKonta" th:field="*{nr_konta}">
+        </div>
+
+        <div class="mb-3">
+            <label for="eMail" class="form-label">E-Mail</label>
+            <input type="text" class="form-control" id="eMail" th:field="*{e_mail}">
+        </div>
+
+        <div class="mb-3">
+            <label for="nrSalonu" class="form-label">Numer Salonu</label>
+            <input type="text" class="form-control" id="nrSalonu" th:field="*{nr_salonu}">
+        </div>
+
+        <div class="mb-3">
+            <label for="moc" class="form-label">Numer Serwisu</label>
+            <input type="text" class="form-control" id="moc" th:field="*{nr_serwisu}">
+        </div>
+
+        <div class="mb-3">
+            <label for="nr_adresu" class="form-label">nr_adresu</label>
+            <input type="text" class="form-control" id="nr_adresu" th:field="*{nr_adresu}">
+        </div>
+
+        <div class="mb-3">
+            <label for="nrTelefonow" class="form-label">Numer Zbioru Telefonów</label>
+            <input type="text" class="form-control" id="nrTelefonow" th:field="*{nr_zbioru_telefonow}">
+        </div>
+
+        <div class="mb-3">
+            <label for="nr_stanowiska" class="form-label">Numer Stanowiska</label>
+            <input type="text" class="form-control" id="nr_stanowiska" th:field="*{nr_stanowiska}">
+        </div>
+
+        <div th:if="${param.error}" style="color:red; margin-bottom:15px">
+            ERROR: Invalid parameters!
+        </div>
+
+        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">Submit</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Cancel</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to cancel everything? You will lost all your progress.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a class="btn btn-danger" th:href="@{/pracownik}" role="button">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="submitModalLabel">Submit</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to submit changes? Everything will be added to database.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:replace="~{general :: waves}"></div>
+
+<div th:replace="~{general :: scripts}"></div>
+</body>
+</html>

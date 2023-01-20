@@ -18,8 +18,6 @@ public class PracownicyController {
 
     @RequestMapping(value={"/pracownik"})
     public String showDbPage(Model model) {
-        String text = "Some text to display at view";
-        model.addAttribute("someText", text);
         List<Pracownik> listPracownik = dao.findAll();
         model.addAttribute("listPracownik", listPracownik);
 
@@ -37,7 +35,7 @@ public class PracownicyController {
     public String save(@ModelAttribute("pracownik") Pracownik pracownik) {
         dao.save(pracownik);
 
-        return "redirect:/";
+        return "redirect:/pracownik";
     }
 
     @RequestMapping("/edit_pracownik/{id}")
@@ -53,14 +51,14 @@ public class PracownicyController {
     public String update(@ModelAttribute("pracownik") Pracownik pracownik) {
         dao.update(pracownik);
 
-        return "redirect:/";
+        return "redirect:/pracownik";
     }
 
     @RequestMapping("/delete_pracownik/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 
-        return "redirect:/";
+        return "redirect:/pracownik";
     }
 }
 

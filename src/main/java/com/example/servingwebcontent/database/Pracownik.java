@@ -10,21 +10,21 @@ public class Pracownik {
     private String nazwisko;
     @DateTimeFormat (pattern = "yyyy-MM-dd")
     private Date data_urodzenia;
-    private char plec;
+    private String plec;
     private String pesel;
     @DateTimeFormat (pattern = "yyyy-MM-dd")
     private Date data_zatrudnienia;
     private String nr_konta;
     private String e_mail;
     private int nr_salonu;
-    private int nr_serwisu;
+    private Integer nr_serwisu;
     private int nr_adresu;
-    private int nr_zbioru_telefonow;
+    private Integer nr_zbioru_telefonow;
     private int nr_stanowiska;
 
     public Pracownik(){
     }
-    public Pracownik(int nr_pracownika, String imie, String nazwisko, Date data_urodzenia, char plec, String pesel, Date data_zatrudnienia, String nr_konta, String e_mail, int nr_salonu, int nr_serwisu, int nr_adresu, int nr_zbioru_telefonow, int nr_stanowiska) {
+    public Pracownik(int nr_pracownika, String imie, String nazwisko, Date data_urodzenia, String plec, String pesel, Date data_zatrudnienia, String nr_konta, String e_mail, int nr_salonu, Integer nr_serwisu, Integer nr_adresu, int nr_zbioru_telefonow, int nr_stanowiska) {
         this.nr_pracownika = nr_pracownika;
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -73,11 +73,11 @@ public class Pracownik {
         this.data_urodzenia = data_urodzenia;
     }
 
-    public char getPlec() {
+    public String getPlec() {
         return plec;
     }
 
-    public void setPlec(char plec) {
+    public void setPlec(String plec) {
         this.plec = plec;
     }
 
@@ -121,11 +121,11 @@ public class Pracownik {
         this.nr_salonu = nr_salonu;
     }
 
-    public int getNr_serwisu() {
+    public Integer getNr_serwisu() {
         return nr_serwisu;
     }
 
-    public void setNr_serwisu(int nr_serwisu) {
+    public void setNr_serwisu(Integer nr_serwisu) {
         this.nr_serwisu = nr_serwisu;
     }
 
@@ -137,11 +137,11 @@ public class Pracownik {
         this.nr_adresu = nr_adresu;
     }
 
-    public int getNr_zbioru_telefonow() {
+    public Integer getNr_zbioru_telefonow() {
         return nr_zbioru_telefonow;
     }
 
-    public void setNr_zbioru_telefonow(int nr_zbioru_telefonow) {
+    public void setNr_zbioru_telefonow(Integer nr_zbioru_telefonow) {
         this.nr_zbioru_telefonow = nr_zbioru_telefonow;
     }
 

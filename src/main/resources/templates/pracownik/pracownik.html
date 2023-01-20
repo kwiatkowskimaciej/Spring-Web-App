@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:insert="~{general :: head (pageTitle='Pracownik')}"></head>
+
+<body>
+
+<nav th:replace="~{general :: navbar}"></nav>
+
+<div class="container col-xxl-8 px-4 py-5 article-container">
+  <h1>Pracownicy</h1>
+    <div>
+        <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new_pracownik}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nowego pracownika</a>
+    </div>
+<!--  <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>-->
+
+  <table class="table table-striped table-dark table-hover table-centered sortable">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+<!--      <th scope="col">VIN</th>-->
+      <th scope="col">Imie</th>
+<!--      <th scope="col">Model</th>-->
+      <th scope="col">Nazwisko</th>
+      <th scope="col">Data Urodzenia</th>
+      <th scope="col">Płeć</th>
+      <th scope="col">PESEL</th>
+      <th scope="col">Data Zatrudnienia</th>
+      <!--      <th scope="col">Numer Rej.</th>-->
+      <th scope="col">Numer Konta</th>
+      <th scope="col">E-Mail</th>
+        <th scope="col">Numer Salonu</th>
+        <th scope="col">Numer Serwisu</th>
+        <th scope="col">Numer Adresu</th>
+        <th scope="col">Numer Zbioru Teleofnów</th>
+        <th scope="col">Numer Stanowiska</th>
+
+        <th scope="col">Action</th>
+      <!--      <th scope="col">Numer Fabryki</th>-->
+<!--      <th scope="col">Numer Salonu</th>-->
+<!--      <th scope="col">Numer Klienta</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "s : ${listPracownik}">
+<!--      th:if="${s.nr_klienta == null}"-->
+      <th scope="row" th:text = "${s.nr_pracownika}">#</th>
+        <td th:text = "${s.imie}"></td>
+        <td th:text = "${s.nazwisko}"></td>
+        <td th:text = "${#dates.format(s.data_urodzenia, 'yyyy-MM-dd')}"></td>
+        <td th:text = "${s.plec}"></td>
+      <td th:text = "${s.pesel}"></td>
+        <td th:text = "${#dates.format(s.data_zatrudnienia, 'yyyy-MM-dd')}"></td>
+
+        <td th:text = "${s.nr_konta}"></td>
+      <td th:text = "${s.e_mail}"></td>
+      <td th:text = "${s.nr_salonu}"></td>
+      <td th:text = "${s.nr_serwisu}"></td>
+      <td th:text = "${s.nr_adresu}"></td>
+      <td th:text = "${s.nr_zbioru_telefonow}"></td>
+        <td th:text = "${s.nr_stanowiska}"></td>
+
+
+
+
+        <td>
+            <a class="edit" th:href="@{'/edit_pracownik/' + ${s.nr_pracownika}}"
+               data-bs-toggle="tooltip"
+               data-bs-placement="top"
+               data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a class="delete" th:href="@{'/delete_pracownik/' + ${s.nr_pracownika}}"
+               data-bs-toggle="tooltip"
+               data-bs-placement="top"
+               data-bs-title="Delete"><i class="fa-solid fa-trash"></i></a>
+        </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div th:replace="~{general :: waves}"></div>
+
+<div th:replace="~{general :: scripts}"></div>
+<script>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+
+</body>
+</html>
