@@ -37,7 +37,7 @@ public class KlienciController {
     public String save(@ModelAttribute("klient") Klient klient) {
         dao.save(klient);
 
-        return "redirect:/";
+        return "redirect:/klient";
     }
 
     @RequestMapping("/edit_klient/{id}")
@@ -53,13 +53,13 @@ public class KlienciController {
     public String update(@ModelAttribute("klient") Klient klient) {
         dao.update(klient);
 
-        return "redirect:/";
+        return "redirect:/klient";
     }
 
     @RequestMapping("/delete_klient/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 
-        return "redirect:/";
+        return "redirect:/klient";
     }
 }

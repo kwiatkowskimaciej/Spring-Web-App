@@ -4,18 +4,18 @@ public class Klient {
     private int nr_klienta;
     private String imie;
     private String nazwisko;
-    private char plec;
+    private String plec;
     private String nr_konta;
     private String e_mail;
-    private String nr_adresu;
-    private String nr_zbioru_telefonow;
+    private Integer nr_adresu;
+    private Integer nr_zbioru_telefonow;
     private int nr_salonu;
 
     public Klient() {
 
     }
 
-    public Klient(int nr_klienta, String imie, String nazwisko, char plec, String nr_konta, String e_mail, String nr_adresu, String nr_zbioru_telefonow, int nr_salonu) {
+    public Klient(int nr_klienta, String imie, String nazwisko, String plec, String nr_konta, String e_mail, Integer nr_adresu, Integer nr_zbioru_telefonow, int nr_salonu) {
         this.nr_klienta = nr_klienta;
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -51,11 +51,11 @@ public class Klient {
         this.nazwisko = nazwisko;
     }
 
-    public char getPlec() {
+    public String getPlec() {
         return plec;
     }
 
-    public void setPlec(char plec) {
+    public void setPlec(String plec) {
         this.plec = plec;
     }
 
@@ -75,19 +75,19 @@ public class Klient {
         this.e_mail = e_mail;
     }
 
-    public String getNr_adresu() {
+    public Integer getNr_adresu() {
         return nr_adresu;
     }
 
-    public void setNr_adresu(String nr_adresu) {
+    public void setNr_adresu(Integer nr_adresu) {
         this.nr_adresu = nr_adresu;
     }
 
-    public String getNr_zbioru_telefonow() {
+    public Integer getNr_zbioru_telefonow() {
         return nr_zbioru_telefonow;
     }
 
-    public void setNr_zbioru_telefonow(String nr_zbioru_telefonow) {
+    public void setNr_zbioru_telefonow(Integer nr_zbioru_telefonow) {
         this.nr_zbioru_telefonow = nr_zbioru_telefonow;
     }
 

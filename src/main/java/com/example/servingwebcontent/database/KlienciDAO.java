@@ -36,7 +36,7 @@ public class KlienciDAO {
         return klient;
     }
     public void update(Klient klient) {
-        String sql = "UPDATE KLIENCI SET nr_klienta=:nr_klienta, imie=:imie, nazwisko=:nazwisko, plec=:plec, nr_konta=:nr_konta, e_mail=:e_mail, nr_adresu=:nr_adresu, nr_zbioru_telefonow=:nr_zbioru_telefonow, nr_salonu=:nr_salonu";
+        String sql = "UPDATE KLIENCI SET nr_klienta=:nr_klienta, imie=:imie, nazwisko=:nazwisko, plec=:plec, nr_konta=:nr_konta, e_mail=:e_mail, nr_adresu=:nr_adresu, nr_zbioru_telefonow=:nr_zbioru_telefonow, nr_salonu=:nr_salonu WHERE nr_klienta=:nr_klienta";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(klient);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 
