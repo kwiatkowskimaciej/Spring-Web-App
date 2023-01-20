@@ -40,8 +40,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="pierwszy_telefon" class="form-label">Telefon</label>
-            <input type="text" class="form-control" id="pierwszy_telefon" th:field="*{pierwszy_telefon}">
+            <label for="nr_adresu" class="form-label">Nr adresu</label>
+            <input type="text" class="form-control" id="nr_adresu" th:field="*{nr_adresu}">
+        </div>
+
+        <div class="mb-3">
+            <label for="nr_zbioru_telefonow" class="form-label">Nr zbioru telefonów</label>
+            <input type="text" class="form-control" id="nr_zbioru_telefonow" th:field="*{nr_zbioru_telefonow}">
         </div>
 
         <div th:if="${param.error}" style="color:red; margin-bottom:15px">
