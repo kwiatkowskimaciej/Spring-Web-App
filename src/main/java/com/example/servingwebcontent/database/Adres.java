@@ -8,13 +8,13 @@ public class Adres {
     private String miejscowosc;
     private String ulica;
     private String numer;
-    private String numer_lokalu;
+    private Integer numer_lokalu;
 
     public Adres() {
 
     }
 
-    public Adres(int nr_adresu, String panstwo, String kod_pocztowy, String rejon, String miejscowosc, String ulica, String numer, String numer_lokalu) {
+    public Adres(int nr_adresu, String panstwo, String kod_pocztowy, String rejon, String miejscowosc, String ulica, String numer, Integer numer_lokalu) {
         this.nr_adresu = nr_adresu;
         this.panstwo = panstwo;
         this.kod_pocztowy = kod_pocztowy;
@@ -81,11 +81,11 @@ public class Adres {
         this.numer = numer;
     }
 
-    public String getNumer_lokalu() {
+    public Integer getNumer_lokalu() {
         return numer_lokalu;
     }
 
-    public void setNumer_lokalu(String numer_lokalu) {
+    public void setNumer_lokalu(Integer numer_lokalu) {
         this.numer_lokalu = numer_lokalu;
     }
 

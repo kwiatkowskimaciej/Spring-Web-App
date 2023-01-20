@@ -18,8 +18,6 @@ public class AdresyController {
 
     @RequestMapping(value={"/adres"})
     public String showDbPage(Model model) {
-        String text = "Some text to display at view";
-        model.addAttribute("someText", text);
         List<Adres> listAdres = dao.findAll();
         model.addAttribute("listAdres", listAdres);
 
