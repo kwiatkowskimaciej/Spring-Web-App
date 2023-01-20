@@ -61,7 +61,7 @@
 
         <td><span style="color: green" th:if="${s.nr_klienta == null}">Na sprzedaż</span><span style="color: red" th:if="${s.nr_klienta != null}">Sprzedany</span></td>
       <td sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE', 'CLIENT')">
-        <a sec:authorize="hasRole('CLIENT')" class="edit" href="#"
+        <a sec:authorize="hasRole('CLIENT')" class="edit" th:href="@{'/buy_car/' + ${s.nr_samochodu}}"
            data-bs-toggle="tooltip"
            data-bs-placement="top"
            data-bs-title="Kup"

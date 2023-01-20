@@ -65,6 +65,7 @@
                 <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/car}">Samochody</a></li>
                 <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/serwis}">Serwisy</a></li>
                 <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/telefon}">Telefony</a></li>
+                <li><a sec:authorize="hasRole('CLIENT')" class="dropdown-item" th:href="@{/edit_klient/3}">Moje Dane</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <form method="post" th:action="@{/index}">
                   <li><a href="javascript:$('form').submit()" class="dropdown-item">Wyloguj</a></li>

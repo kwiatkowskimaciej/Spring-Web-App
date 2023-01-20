@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{general :: head (pageTitle='Buy Car')}"></head>
+<body>
+<nav th:replace="~{general :: navbar}"> </nav>
+
+<div class="container col-xxl-8 px-4 py-5 article-container">
+  <h1 class="border-bottom">Kup Samochód</h1>
+  <form class="database-form" action="#" th:action="@{/update_car}" th:object="${samochod}" method="post">
+
+    <div class="mb-3" hidden>
+      <label for="NumerSalonu" class="form-label">Numer Samochodu</label>
+      <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{nr_samochodu}" readonly="readonly">
+      <!--      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="Nazwa" class="form-label">VIN</label>
+      <input type="text" class="form-control" id="Nazwa" th:field="*{vin}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="data_zalozenia" class="form-label">Rok produkcji</label>
+      <input type="date" class="form-control" id="data_zalozenia" th:field="*{rok_produkcji}"  required aria-describedby="dataHelp">
+      <div id="dataHelp" class="form-text">Data powinna być w formacie yyyy-MM-dd.</div>
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="nr_adresu" class="form-label">Typ Nadwozia</label>
+      <input type="text" class="form-control" id="nr_adresu" th:field="*{typ_nadwozia}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="nr_zbioru_telefonow" class="form-label">Rodzaj Silnika</label>
+      <input type="text" class="form-control" id="nr_zbioru_telefonow" th:field="*{rodzaj_silnika}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="typ_napedu" class="form-label">Typ Napedu</label>
+      <input type="text" class="form-control" id="typ_napedu" th:field="*{typ_napedu}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="moc" class="form-label">Moc</label>
+      <input type="text" class="form-control" id="moc" th:field="*{moc}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="ilosc_osob" class="form-label">Ilosc Osób</label>
+      <input type="text" class="form-control" id="ilosc_osob" th:field="*{ilosc_osob}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="poj_bagaznika" class="form-label">Poj. Bagażnika</label>
+      <input type="text" class="form-control" id="poj_bagaznika" th:field="*{poj_bagaznika}">
+    </div>
+
+      <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+        <div class="d-flex flex-column align-items-start gap-2">
+          <h3 class="fw-bold">Twój nowy samochód już na Ciebie czeka</h3>
+          <p class="text-muted">Podaj numer rejestracyjny dla Twojego nowego samochodu i potwierdź, a my niebawem dostarczymy go do Twojego garażu.</p>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 g-4">
+          <div class="d-flex flex-column gap-2">
+            <i class="fa-solid fa-hashtag fa-2xl" style="margin-bottom: 1rem;"></i>
+            <h4 class="fw-semibold mb-0"><p th:remove="tag" th:text="*{nr_samochodu}"></p></h4>
+            <p class="text-muted">Świetny wybór! Nie mogłeś dokonać lepszego.</p>
+          </div>
+
+          <div class="d-flex flex-column gap-2">
+            <i class="fa-solid fa-calendar-days fa-2xl" style="margin-bottom: 1rem;"></i>
+            <h4 class="fw-semibold mb-0"><p th:remove="tag" th:text="*{#dates.format(rok_produkcji, 'yyyy')}"></p></h4>
+            <p class="text-muted">Dosłownie wyjechał z fabryki.</p>
+          </div>
+
+          <div class="d-flex flex-column gap-2">
+            <i class="fa-solid fa-dollar-sign fa-2xl" style="margin-bottom: 1rem;"></i>
+            <h4 class="fw-semibold mb-0"><p th:remove="tag" th:text="*{cena}"></p></h4>
+            <p class="text-muted">Doskonała jakość. Stosowna cena.</p>
+          </div>
+
+          <div class="d-flex flex-column gap-2">
+            <i class="fa-solid fa-gauge fa-2xl" style="margin-bottom: 1rem;"></i>
+            <h4 class="fw-semibold mb-0"><p th:remove="tag" th:text="*{moc}"></p></h4>
+            <p class="text-muted">Niesamowita moc zadowoli każdego rajdowca.</p>
+          </div>
+        </div>
+      </div>
+
+    <div class="mb-3">
+      <label for="my-input" class="form-label">Wprowadź Numer Rejestracyjny</label>
+      <input type="text" class="form-control" id="my-input" data-mdb-showcounter="true" maxlength="8" th:field="*{nr_rejestracyjny}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="kolor" class="form-label">Kolor</label>
+      <input type="text" class="form-control" id="kolor" th:field="*{kolor}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="Cena" class="form-label">Cena</label>
+      <input type="text" class="form-control" id="Cena" th:field="*{cena}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="nr_fabryki" class="form-label">Nr Fabryki</label>
+      <input type="text" class="form-control" id="nr_fabryki" th:field="*{nr_fabryki}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="nr_salonu" class="form-label">Nr Salonu</label>
+      <input type="text" class="form-control" id="nr_salonu" th:field="*{nr_salonu}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="nr_klienta" class="form-label">Nr Klienta</label>
+      <input type="text" class="form-control" id="nr_klienta" th:field="*{nr_klienta}" value="3">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="nr_modelu" class="form-label">Nr Modelu</label>
+      <input type="text" class="form-control" id="nr_modelu" th:field="*{nr_modelu}">
+    </div>
+
+    <div th:if="${param.error}" style="color:red; margin-bottom:15px">
+      ERROR: Invalid parameters!
+    </div>
+
+    <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#cancelModal">Rezygnuję</button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">Kupuję</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Rezygnuję</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Czy checesz zrezygnować z zakupu samochodu?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nie</button>
+            <a class="btn btn-danger" th:href="@{/car}" role="button">Tak</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="submitModalLabel">Kupuję</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Jesteś pewien, że chcesz kupić ten samochód?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nie</button>
+            <button type="submit" class="btn btn-success">Tak</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.getElementById("nr_klienta").value = 3;
+</script>
+
+<div th:replace="~{general :: waves}"></div>
+
+<div th:replace="~{general :: scripts}"></div>
+
+<script>
+$( document ).ready(function() {
+    $("#my-input").keypress(function(e){
+      if(e.keyCode != 8 && e.keyCode !=46) {
+         var text = this.value;
+        if(text.split("-").length > 2){
+            alert("already exists");
+            return false;
+         }
+        if(text.length ==2){
+           this.value=text+' ';
+         }
+        }
+     });
+});
+</script>
+</body>
+</html>
