@@ -10,17 +10,17 @@ public class Samochod {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date rok_produkcji;
     private String typ_nadwozia;
-    private char rodzaj_silnika;
+    private String rodzaj_silnika;
     private String typ_napedu;
     private int moc;
     private int ilosc_osob;
-    private String poj_bagaznika;
+    private Integer poj_bagaznika;
     private String nr_rejestracyjny;
     private String kolor;
-    private String cena;
+    private int cena;
     private int nr_fabryki;
     private int nr_salonu;
-    private String nr_klienta;
+    private Integer nr_klienta;
     private int nr_modelu;
 
 //    private String model;
@@ -28,7 +28,7 @@ public class Samochod {
     public Samochod() {
     }
 
-    public Samochod(int nr_samochodu, String vin, Date rok_produkcji, String typ_nadwozia, char rodzaj_silnika, String typ_napedu, int moc, int ilosc_osob, String poj_bagaznika, String nr_rejestracyjny, String kolor, String cena, int nr_fabryki, int nr_salonu, String nr_klienta, int nr_modelu) {
+    public Samochod(int nr_samochodu, String vin, Date rok_produkcji, String typ_nadwozia, String rodzaj_silnika, String typ_napedu, int moc, int ilosc_osob, Integer poj_bagaznika, String nr_rejestracyjny, String kolor, int cena, int nr_fabryki, int nr_salonu, Integer nr_klienta, int nr_modelu) {
         this.nr_samochodu = nr_samochodu;
         this.vin = vin;
         this.rok_produkcji = rok_produkcji;
@@ -45,10 +45,7 @@ public class Samochod {
         this.nr_salonu = nr_salonu;
         this.nr_klienta = nr_klienta;
         this.nr_modelu = nr_modelu;
-//        this.model = model;
     }
-
-
 
     public int getNr_samochodu() {
         return nr_samochodu;
@@ -82,11 +79,11 @@ public class Samochod {
         this.typ_nadwozia = typ_nadwozia;
     }
 
-    public char getRodzaj_silnika() {
+    public String getRodzaj_silnika() {
         return rodzaj_silnika;
     }
 
-    public void setRodzaj_silnika(char rodzaj_silnika) {
+    public void setRodzaj_silnika(String rodzaj_silnika) {
         this.rodzaj_silnika = rodzaj_silnika;
     }
 
@@ -114,11 +111,11 @@ public class Samochod {
         this.ilosc_osob = ilosc_osob;
     }
 
-    public String getPoj_bagaznika() {
+    public Integer getPoj_bagaznika() {
         return poj_bagaznika;
     }
 
-    public void setPoj_bagaznika(String poj_bagaznika) {
+    public void setPoj_bagaznika(Integer poj_bagaznika) {
         this.poj_bagaznika = poj_bagaznika;
     }
 
@@ -138,11 +135,11 @@ public class Samochod {
         this.kolor = kolor;
     }
 
-    public String getCena() {
+    public int getCena() {
         return cena;
     }
 
-    public void setCena(String cena) {
+    public void setCena(int cena) {
         this.cena = cena;
     }
 
@@ -162,11 +159,11 @@ public class Samochod {
         this.nr_salonu = nr_salonu;
     }
 
-    public String getNr_klienta() {
+    public Integer getNr_klienta() {
         return nr_klienta;
     }
 
-    public void setNr_klienta(String nr_klienta) {
+    public void setNr_klienta(Integer nr_klienta) {
         this.nr_klienta = nr_klienta;
     }
 

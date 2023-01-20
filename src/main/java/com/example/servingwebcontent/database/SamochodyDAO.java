@@ -31,12 +31,13 @@ public class SamochodyDAO {
     }
     public Samochod get(int id) {
         Object[] args = {id};
-        String sql = "SELECT * FROM SAMOCHODY s LEFT OUTER JOIN MODELE m ON s.nr_modelu = m.nr_modelu WHERE nr_samochodu = " + args[0];
+//        String sql = "SELECT * FROM SAMOCHODY s LEFT OUTER JOIN MODELE m ON s.nr_modelu = m.nr_modelu WHERE nr_samochodu = " + args[0];
+        String sql = "SELECT * FROM SAMOCHODY WHERE nr_samochodu = " + args[0];
         Samochod samochod = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Samochod.class));
         return samochod;
     }
     public void update(Samochod samochod) {// TODO: zmienić
-        String sql = "UPDATE SAMOCHODY SET nr_samochodu=:nr_samochodu, vin=:vin, rok_produkcji=:rok_produkcji, typ_nadwozia=:typ_nadwozia, rodzaj_silnika=:rodzaj_silnika, typ_napedu=:typ_napedu, moc=:moc, ilosc_osob=:ilosc_osob, poj_bagaznika=:poj_bagaznika, nr_rejestracyjny=:nr_rejestracyjny, kolor=:kolor, cena=:cena, nr_fabryki=:nr_fabryki, nr_salonu=:nr_salonu, nr_klienta=:nr_klienta, nr_modelu=:nr_modelu";
+        String sql = "UPDATE SAMOCHODY SET nr_samochodu=:nr_samochodu, vin=:vin, rok_produkcji=:rok_produkcji, typ_nadwozia=:typ_nadwozia, rodzaj_silnika=:rodzaj_silnika, typ_napedu=:typ_napedu, moc=:moc, ilosc_osob=:ilosc_osob, poj_bagaznika=:poj_bagaznika, nr_rejestracyjny=:nr_rejestracyjny, kolor=:kolor, cena=:cena, nr_fabryki=:nr_fabryki, nr_salonu=:nr_salonu, nr_klienta=:nr_klienta, nr_modelu=:nr_modelu WHERE nr_samochodu=:nr_samochodu";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(samochod);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 
