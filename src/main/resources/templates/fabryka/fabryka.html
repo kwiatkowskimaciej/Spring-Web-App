@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymelead.org/thymeleaf-extras-springsecurity6">
+<head th:insert="~{general :: head (pageTitle='Fabryki')}"></head>
+
+<body>
+
+<nav th:replace="~{general :: navbar}"></nav>
+
+<div class="container col-xxl-8 px-4 py-5 article-container">
+    <h1>Adresy</h1>
+    <div>
+        <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new_fabryka}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nową fabrykę</a>
+    </div>
+
+    <table class="table table-striped table-dark table-hover table-centered">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nazwa</th>
+            <th scope="col">E mail</th>
+            <th scope="col">Nr konta</th>
+            <th scope="col">Czy zagraniczny</th>
+            <th scope="col">Odległość</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "f : ${listFabryka}">
+            <th scope="row" th:text = "${f.nr_fabryki}">#</th>
+            <th scope="row" th:text = "${f.nazwa}">Nazwa</th>
+            <th scope="row" th:text = "${f.e_mail}">E mail</th>
+            <th scope="row" th:text = "${f.nr_konta}">Nr konta</th>
+            <th scope="row" th:text = "${f.czy_zagraniczny}">Czy zagraniczny</th>
+            <th scope="row" th:text = "${f.odleglosc}">Odległość</th>
+            <th scope="row" th:text = "${f.pierwszy_telefon}">Telefon</th>
+
+            <td>
+                <a class="edit" th:href="@{'/edit_fabryka/' + ${f.nr_fabryki}}"
+                   data-bs-toggle="tooltip"
+                   data-bs-placement="top"
+                   data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a class="delete" th:href="@{'/delete_fabryka/' + ${f.nr_fabryki}}"
+                   data-bs-toggle="tooltip"
+                   data-bs-placement="top"
+                   data-bs-title="Delete"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="~{general :: waves}"></div>
+
+<div th:replace="~{general :: scripts}"></div>
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+
+</body>
+</html>

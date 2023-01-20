@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{general :: head (pageTitle='New Fabryka')}"></head>
+<body>
+<nav th:replace="~{general :: navbar}"> </nav>
+
+<div class="container col-xxl-8 px-4 py-5 article-container">
+    <h1>New fabryka</h1>
+
+    <form class="database-form" action="#" th:action="@{/save_fabryka}" th:object="${fabryka}" method="post">
+        <div class="mb-3">
+            <label for="NumerFabryki" class="form-label">Numer Fabryki</label>
+            <input type="text" class="form-control" id="NumerFabryki" aria-describedby="nazwaHelp" th:field="*{nr_fabryki}">
+            <!--      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+        </div>
+
+        <div class="mb-3">
+            <label for="nazwa" class="form-label">Nazwa</label>
+            <input type="text" class="form-control" id="nazwa" th:field="*{nazwa}">
+        </div>
+
+        <div class="mb-3">
+            <label for="e_mail" class="form-label">E mail</label>
+            <input type="text" class="form-control" id="e_mail" th:field="*{e_mail}">
+        </div>
+
+        <div class="mb-3">
+            <label for="nr_konta" class="form-label">Nr konta</label>
+            <input type="text" class="form-control" id="nr_konta" th:field="*{nr_konta}">
+        </div>
+
+        <div class="mb-3">
+            <label for="czy_zagraniczny" class="form-label">Czy zagraniczny</label>
+            <input type="text" class="form-control" id="czy_zagraniczny" th:field="*{czy_zagraniczny}">
+        </div>
+
+        <div class="mb-3">
+            <label for="odleglosc" class="form-label">Odległość</label>
+            <input type="text" class="form-control" id="odleglosc" th:field="*{odleglosc}">
+        </div>
+
+        <div class="mb-3">
+            <label for="pierwszy_telefon" class="form-label">Telefon</label>
+            <input type="text" class="form-control" id="pierwszy_telefon" th:field="*{pierwszy_telefon}">
+        </div>
+
+        <div th:if="${param.error}" style="color:red; margin-bottom:15px">
+            ERROR: Invalid parameters!
+        </div>
+
+        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">Submit</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Cancel</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to cancel everything? You will lose all your progress.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a class="btn btn-danger" th:href="@{/fabryka}" role="button">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="submitModalLabel">Submit</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to submit changes? Everything will be added to database.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:replace="~{general :: waves}"></div>
+
+<div th:replace="~{general :: scripts}"></div>
+</body>
+</html>

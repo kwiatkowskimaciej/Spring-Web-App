@@ -9,12 +9,13 @@ public class Fabryka {
     private String odleglosc;
     private int nr_adresu;
     private int nr_zbioru_telefonow;
+    private String pierwszy_telefon;
 
     public Fabryka() {
 
     }
 
-    public Fabryka(int nr_fabryki, String nazwa, String e_mail, String nr_konta, char czy_zagraniczny, String odleglosc, int nr_adresu, int nr_zbioru_telefonow) {
+    public Fabryka(int nr_fabryki, String nazwa, String e_mail, String nr_konta, char czy_zagraniczny, String odleglosc, int nr_adresu, int nr_zbioru_telefonow, String pierwszy_telefon) {
         this.nr_fabryki = nr_fabryki;
         this.nazwa = nazwa;
         this.e_mail = e_mail;
@@ -23,6 +24,7 @@ public class Fabryka {
         this.odleglosc = odleglosc;
         this.nr_adresu = nr_adresu;
         this.nr_zbioru_telefonow = nr_zbioru_telefonow;
+        this.pierwszy_telefon = pierwszy_telefon;
     }
 
     public int getNr_fabryki() {
@@ -89,6 +91,14 @@ public class Fabryka {
         this.nr_zbioru_telefonow = nr_zbioru_telefonow;
     }
 
+    public String getPierwszy_telefon() {
+        return pierwszy_telefon;
+    }
+
+    public void setPierwszy_telefon(String pierwszy_telefon) {
+        this.pierwszy_telefon = pierwszy_telefon;
+    }
+
     @Override
     public String toString() {
         return "Fabryka{" +
@@ -100,6 +110,7 @@ public class Fabryka {
                 ", odleglosc='" + odleglosc + '\'' +
                 ", nr_adresu=" + nr_adresu +
                 ", nr_zbioru_telefonow=" + nr_zbioru_telefonow +
+                ", pierwszy_telefon='" + pierwszy_telefon + '\'' +
                 '}';
     }
 }
