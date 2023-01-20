@@ -20,6 +20,7 @@ public class SerwisyDAO {
 
     public List<Serwis> findAll(){
         String sql = "SELECT * from SERWISY s LEFT JOIN ADRESY a ON s.nr_adresu = a.nr_adresu LEFT JOIN TELEFONY t ON s.nr_zbiorow_telefonow = t.nr_zbioru_telefonow";
+//        String sql = "SELECT * from SERWISY";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Serwis.class));
     }
     public void save(Serwis serwis) {
@@ -36,7 +37,7 @@ public class SerwisyDAO {
         return serwis;
     }
     public void update(Serwis serwis) {
-        String sql = "UPDATE SERWISY SET nr_serwisu=:nr_serwisu, nazwa=:nazwa, liczba_stanowisk=:liczba_stanowisk, nr_salonu=:nr_salonu, nr_adresu=:nr_adresu, nr_zbiorow_telefonow=:nr_zbiorow_telefonow";
+        String sql = "UPDATE SERWISY SET nr_serwisu=:nr_serwisu, nazwa=:nazwa, liczba_stanowisk=:liczba_stanowisk, nr_salonu=:nr_salonu, nr_adresu=:nr_adresu, nr_zbiorow_telefonow=:nr_zbiorow_telefonow WHERE nr_serwisu=:nr_serwisu";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(serwis);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 

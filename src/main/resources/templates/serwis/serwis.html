@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:insert="~{general :: head (pageTitle='Serwisy')}"></head>
+
+<body>
+
+<nav th:replace="~{general :: navbar}"></nav>
+
+<div class="container col-xxl-8 px-4 py-5 article-container">
+  <h1>Serwisy</h1>
+  <div>
+  <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new_serwis}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nowy serwis</a>
+  </div>
+
+  <table class="table table-striped table-dark table-hover table-centered">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Liczba Stanowisk</th>
+      <th scope="col">Numer Salonu</th>
+      <th scope="col">Numer Adresu</th>
+      <th scope="col">Numer Zbioru Telefonów</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "s : ${listSerwis}">
+      <th scope="row" th:text = "${s.nr_serwisu}">#</th>
+      <td th:text = "${s.nazwa}"></td>
+      <td th:text = "${s.liczba_stanowisk}"></td>
+      <td th:text = "${s.nr_salonu}"></td>
+      <td th:text = "${s.nr_adresu}"></td>
+      <td th:text = "${s.nr_zbiorow_telefonow}"></td>
+      <td>
+        <a class="edit" th:href="@{'/edit_serwis/' + ${s.nr_serwisu}}"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a class="delete" th:href="@{'/delete_serwis/' + ${s.nr_serwisu}}"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           data-bs-title="Delete"><i class="fa-solid fa-trash"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div th:replace="~{general :: waves}"></div>
+
+<div th:replace="~{general :: scripts}"></div>
+<script>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+
+</body>
+</html>

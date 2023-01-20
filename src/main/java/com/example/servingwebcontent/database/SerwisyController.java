@@ -18,8 +18,6 @@ public class SerwisyController {
 
     @RequestMapping(value={"/serwis"})
     public String showDbPage(Model model) {
-        String text = "Some text to display at view";
-        model.addAttribute("someText", text);
         List<Serwis> listSerwis = dao.findAll();
         model.addAttribute("listSerwis", listSerwis);
 
@@ -37,7 +35,7 @@ public class SerwisyController {
     public String save(@ModelAttribute("serwis") Serwis serwis) {
         dao.save(serwis);
 
-        return "redirect:/";
+        return "redirect:/serwis";
     }
 
     @RequestMapping("/edit_serwis/{id}")
@@ -53,13 +51,13 @@ public class SerwisyController {
     public String update(@ModelAttribute("serwis") Serwis serwis) {
         dao.update(serwis);
 
-        return "redirect:/";
+        return "redirect:/serwis";
     }
 
     @RequestMapping("/delete_serwis/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 
-        return "redirect:/";
+        return "redirect:/serwis";
     }
 }
