@@ -37,7 +37,7 @@ public class FirmyController {
     public String save(@ModelAttribute("firma") Firma firma) {
         dao.save(firma);
 
-        return "redirect:/";
+        return "redirect:/firma";
     }
 
     @RequestMapping("/edit_firma/{id}")
@@ -53,13 +53,13 @@ public class FirmyController {
     public String update(@ModelAttribute("firma") Firma firma) {
         dao.update(firma);
 
-        return "redirect:/";
+        return "redirect:/firma";
     }
 
     @RequestMapping("/delete_firma/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 
-        return "redirect:/";
+        return "redirect:/firma";
     }
 }

@@ -11,12 +11,14 @@ public class Firma {
     private int nr_klienta;
     private String nr_adresu;
     private String nr_zbioru_telefonow;
+    private String nazwisko;
+    private String pierwszy_telefon;
 
     public Firma() {
 
     }
 
-    public Firma(int nr_firmy, String nazwa, String nip, String regon, String krs, String nr_konta, String e_mail, int nr_klienta, String nr_adresu, String nr_zbioru_telefonow) {
+    public Firma(int nr_firmy, String nazwa, String nip, String regon, String krs, String nr_konta, String e_mail, int nr_klienta, String nr_adresu, String nr_zbioru_telefonow, String nazwisko, String pierwszy_telefon) {
         this.nr_firmy = nr_firmy;
         this.nazwa = nazwa;
         this.nip = nip;
@@ -27,6 +29,8 @@ public class Firma {
         this.nr_klienta = nr_klienta;
         this.nr_adresu = nr_adresu;
         this.nr_zbioru_telefonow = nr_zbioru_telefonow;
+        this.nazwisko = nazwisko;
+        this.pierwszy_telefon = pierwszy_telefon;
     }
 
     public int getNr_firmy() {
@@ -109,6 +113,22 @@ public class Firma {
         this.nr_zbioru_telefonow = nr_zbioru_telefonow;
     }
 
+    public String getNazwisko() {
+        return nazwisko;
+    }
+
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
+    }
+
+    public String getPierwszy_telefon() {
+        return pierwszy_telefon;
+    }
+
+    public void setPierwszy_telefon(String pierwszy_telefon) {
+        this.pierwszy_telefon = pierwszy_telefon;
+    }
+
     @Override
     public String toString() {
         return "Firma{" +
@@ -120,8 +140,10 @@ public class Firma {
                 ", nr_konta='" + nr_konta + '\'' +
                 ", e_mail='" + e_mail + '\'' +
                 ", nr_klienta=" + nr_klienta +
-                ", nr_adresu=" + nr_adresu +
-                ", nr_zbioru_telefonow=" + nr_zbioru_telefonow +
+                ", nr_adresu='" + nr_adresu + '\'' +
+                ", nr_zbioru_telefonow='" + nr_zbioru_telefonow + '\'' +
+                ", nazwisko='" + nazwisko + '\'' +
+                ", pierwszy_telefon='" + pierwszy_telefon + '\'' +
                 '}';
     }
 }
