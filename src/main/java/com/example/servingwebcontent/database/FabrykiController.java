@@ -37,7 +37,7 @@ public class FabrykiController {
     public String save(@ModelAttribute("fabryka") Fabryka fabryka) {
         dao.save(fabryka);
 
-        return "redirect:/";
+        return "redirect:/fabryka";
     }
 
     @RequestMapping("/edit_fabryka/{id}")
@@ -53,13 +53,13 @@ public class FabrykiController {
     public String update(@ModelAttribute("fabryka") Fabryka fabryka) {
         dao.update(fabryka);
 
-        return "redirect:/";
+        return "redirect:/fabryka";
     }
 
     @RequestMapping("/delete_fabryka/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 
-        return "redirect:/";
+        return "redirect:/fabryka";
     }
 }
