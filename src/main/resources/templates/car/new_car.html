@@ -1,40 +1,99 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head th:insert="~{general :: head (pageTitle='Dodaj salon')}"></head>
+<head th:insert="~{general :: head (pageTitle='Add Car')}"></head>
 <body>
 <nav th:replace="~{general :: navbar}"> </nav>
 
 <div class="container col-xxl-8 px-4 py-5 article-container">
-  <h1>Nowy salon</h1>
+  <h1>Dodaj Samochód</h1>
 
-  <form class="database-form" action="#" th:action="@{/save_salon}" th:object="${salon}" method="post">
+  <form class="database-form" action="#" th:action="@{/save_car}" th:object="${samochod}" method="post">
+
     <div class="mb-3">
-      <label for="NumerSalonu" class="form-label">Numer Salonu</label>
-      <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{nr_salonu}" required>
-      <!--        <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+      <label for="NumerSalonu" class="form-label">Numer Samochodu</label>
+      <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{nr_samochodu}">
+      <!--      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
     </div>
 
     <div class="mb-3">
-      <label for="Nazwa" class="form-label">Nazwa</label>
-      <input type="text" class="form-control" id="Nazwa" th:field="*{nazwa}" required>
+      <label for="Nazwa" class="form-label">VIN</label>
+      <input type="text" class="form-control" id="Nazwa" th:field="*{vin}">
     </div>
 
     <div class="mb-3">
-      <label for="data_zalozenia" class="form-label">Data Założenia</label>
-      <input type="date" class="form-control" id="data_zalozenia" th:field="*{data_zalozenia}" required>
+      <label for="data_zalozenia" class="form-label">Rok produkcji</label>
+      <input type="date" class="form-control" id="data_zalozenia" th:field="*{rok_produkcji}"  required aria-describedby="dataHelp">
+      <div id="dataHelp" class="form-text">Data powinna być w formacie yyyy-MM-dd.</div>
     </div>
 
     <div class="mb-3">
-      <label for="nr_adresu" class="form-label">Numer Adresu</label>
-      <input type="text" class="form-control" id="nr_adresu" th:field="*{nr_adresu}" required>
+      <label for="nr_adresu" class="form-label">Typ Nadwozia</label>
+      <input type="text" class="form-control" id="nr_adresu" th:field="*{typ_nadwozia}">
     </div>
 
     <div class="mb-3">
-      <label for="nr_zbioru_telefonow" class="form-label">Numer Zbioru Telefonów</label>
-      <input type="text" class="form-control" id="nr_zbioru_telefonow" th:field="*{nr_zbioru_telefonow}" required>
+      <label for="nr_zbioru_telefonow" class="form-label">Rodzaj Silnika</label>
+      <input type="text" class="form-control" id="nr_zbioru_telefonow" th:field="*{rodzaj_silnika}">
     </div>
 
-    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+    <div class="mb-3">
+      <label for="typ_napedu" class="form-label">Typ Napedu</label>
+      <input type="text" class="form-control" id="typ_napedu" th:field="*{typ_napedu}">
+    </div>
+
+    <div class="mb-3">
+      <label for="moc" class="form-label">Moc</label>
+      <input type="text" class="form-control" id="moc" th:field="*{moc}">
+    </div>
+
+    <div class="mb-3">
+      <label for="ilosc_osob" class="form-label">Ilosc Osób</label>
+      <input type="text" class="form-control" id="ilosc_osob" th:field="*{ilosc_osob}">
+    </div>
+
+    <div class="mb-3">
+      <label for="poj_bagaznika" class="form-label">Poj. Bagażnika</label>
+      <input type="text" class="form-control" id="poj_bagaznika" th:field="*{poj_bagaznika}">
+    </div>
+
+    <div class="mb-3">
+      <label for="nr_rejestracyjny" class="form-label">Numer Rejestracyjny</label>
+      <input type="text" class="form-control" id="nr_rejestracyjny" th:field="*{nr_rejestracyjny}">
+    </div>
+
+    <div class="mb-3">
+      <label for="kolor" class="form-label">Kolor</label>
+      <input type="text" class="form-control" id="kolor" th:field="*{kolor}">
+    </div>
+
+    <div class="mb-3">
+      <label for="Cena" class="form-label">Cena</label>
+      <input type="text" class="form-control" id="Cena" th:field="*{cena}">
+    </div>
+
+    <div class="mb-3">
+      <label for="nr_fabryki" class="form-label">Nr Fabryki</label>
+      <input type="text" class="form-control" id="nr_fabryki" th:field="*{nr_fabryki}">
+    </div>
+
+    <div class="mb-3">
+      <label for="nr_salonu" class="form-label">Nr Salonu</label>
+      <input type="text" class="form-control" id="nr_salonu" th:field="*{nr_salonu}">
+    </div>
+
+    <div class="mb-3">
+      <label for="nr_klienta" class="form-label">Nr Klienta</label>
+      <input type="text" class="form-control" id="nr_klienta" th:field="*{nr_klienta}">
+    </div>
+
+    <div class="mb-3">
+      <label for="nr_modelu" class="form-label">Nr Modelu</label>
+      <input type="text" class="form-control" id="nr_modelu" th:field="*{nr_modelu}">
+    </div>
+
+    <div th:if="${param.error}" style="color:red; margin-bottom:15px">
+      ERROR: Invalid parameters!
+    </div>
 
     <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">Submit</button>
@@ -52,7 +111,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <a class="btn btn-danger" th:href="@{/salon}" role="button">Cancel</a>
+            <a class="btn btn-danger" th:href="@{/car}" role="button">Cancel</a>
           </div>
         </div>
       </div>

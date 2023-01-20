@@ -11,7 +11,7 @@
 <div class="container col-xxl-8 px-4 py-5 article-container">
   <h1>Samochody</h1>
   <div sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')">
-    <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new_salon}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nowy samochód</a>
+    <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new_car}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nowy samochód</a>
   </div>
     <div sec:authorize="isAnonymous()" style="margin-bottom: 1rem">
         <a th:href="@{/login}">Zaloguj się</a> aby kupić samochód
@@ -70,7 +70,7 @@
            data-bs-toggle="tooltip"
            data-bs-placement="top"
            data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-        <a sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')" class="delete" href="#"
+        <a sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')" class="delete" th:href="@{'/delete_car/' + ${s.nr_salonu}}"
            data-bs-toggle="tooltip"
            data-bs-placement="top"
            data-bs-title="Delete"><i class="fa-solid fa-trash"></i></a>

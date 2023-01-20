@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="~{general :: head (pageTitle='Edit Telefon')}"></head>
+<body>
+<nav th:replace="~{general :: navbar}"> </nav>
+
+<div class="container col-xxl-8 px-4 py-5 article-container">
+  <h1>Edytuj telefon</h1>
+
+  <form class="database-form" action="#" th:action="@{/save_telefon}" th:object="${telefon}" method="post">
+    <div class="mb-3">
+      <label for="NumerSalonu" class="form-label">Numer Zbioru Telefonów</label>
+      <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{nr_zbioru_telefonow}">
+      <!--      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+    </div>
+
+    <div class="mb-3">
+      <label for="Nazwa" class="form-label">Pierwszy Telefon</label>
+      <input type="text" class="form-control" id="Nazwa" th:field="*{pierwszy_telefon}">
+    </div>
+
+    <div class="mb-3">
+      <label for="nr_adresu" class="form-label">Drugi Telefon</label>
+      <input type="text" class="form-control" id="nr_adresu" th:field="*{drugi_telefon}">
+    </div>
+
+    <div class="mb-3">
+      <label for="nr_zbioru_telefonow" class="form-label">Trzeci Telefon</label>
+      <input type="text" class="form-control" id="nr_zbioru_telefonow" th:field="*{trzeci_telefon}">
+    </div>
+
+    <div th:if="${param.error}" style="color:red; margin-bottom:15px">
+      ERROR: Invalid parameters!
+    </div>
+
+    <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">Submit</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Cancel</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure to cancel everything? You will lost all your progress.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a class="btn btn-danger" th:href="@{/salon}" role="button">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="submitModalLabel">Submit</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure to submit changes? Everything will be added to database.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div th:replace="~{general :: waves}"></div>
+
+<div th:replace="~{general :: scripts}"></div>
+</body>
+</html>

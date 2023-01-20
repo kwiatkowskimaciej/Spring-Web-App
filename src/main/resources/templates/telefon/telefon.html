@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:insert="~{general :: head (pageTitle='Telefony')}"></head>
+
+<body>
+
+<nav th:replace="~{general :: navbar}"></nav>
+
+<div class="container col-xxl-8 px-4 py-5 article-container">
+  <h1>Telefony</h1>
+  <div>
+  <a class="btn btn-outline-light btn-sm px-4 me-md-2" th:href="@{/new_telefon}" role="button"><i class="fa-solid fa-plus"></i>Dodaj nowy numer telefonu</a>
+  </div>
+
+  <table class="table table-striped table-dark table-hover table-centered">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Pierwszy Telefon</th>
+      <th scope="col">Drugi Telefon</th>
+      <th scope="col">Trzeci Telefon</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "t : ${listTelefon}">
+      <th scope="row" th:text = "${t.nr_zbioru_telefonow}">#</th>
+      <td th:text = "${t.pierwszy_telefon}"></td>
+      <td th:text = "${t.drugi_telefon}"></td>
+      <td th:text = "${t.trzeci_telefon}"></td>
+
+      <td>
+        <a class="edit" th:href="@{'/edit_telefon/' + ${t.nr_zbioru_telefonow}}"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a class="delete" th:href="@{'/delete_telefon/' + ${t.nr_zbioru_telefonow}}"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           data-bs-title="Delete"><i class="fa-solid fa-trash"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div th:replace="~{general :: waves}"></div>
+
+<div th:replace="~{general :: scripts}"></div>
+<script>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+
+</body>
+</html>

@@ -18,8 +18,6 @@ public class TelefonyController {
 
     @RequestMapping(value={"/telefon"})
     public String showDbPage(Model model) {
-        String text = "Some text to display at view";
-        model.addAttribute("someText", text);
         List<Telefon> listTelefon = dao.findAll();
         model.addAttribute("listTelefon", listTelefon);
 
@@ -37,7 +35,7 @@ public class TelefonyController {
     public String save(@ModelAttribute("telefon") Telefon telefon) {
         dao.save(telefon);
 
-        return "redirect:/";
+        return "redirect:/telefon";
     }
 
     @RequestMapping("/edit_telefon/{id}")
@@ -53,13 +51,13 @@ public class TelefonyController {
     public String update(@ModelAttribute("telefon") Telefon telefon) {
         dao.update(telefon);
 
-        return "redirect:/";
+        return "redirect:/telefon";
     }
 
     @RequestMapping("/delete_telefon/{id}")
     public String delete(@PathVariable(name = "id") int id) {
         dao.delete(id);
 
-        return "redirect:/";
+        return "redirect:/telefon";
     }
 }
