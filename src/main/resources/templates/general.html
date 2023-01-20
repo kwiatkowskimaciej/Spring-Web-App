@@ -56,9 +56,15 @@
                 <span class="username"><i class="fa-solid fa-bars"></i><span th:remove="tag" sec:authentication="name">thymeleaf</span></span>
               </button>
               <ul class="dropdown-menu">
-                <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/salon}">Salon</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li sec:authorize="hasRole('ADMIN')"><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/adres}">Adresy</a></li>
+                <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/fabryka}">Fabryki</a></li>
+                <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/firma}">Firmy</a></li>
+                <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/klient}">Klienci</a></li>
+                <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/pracownik}">Pracownicy</a></li>
+                <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/salon}">Salony</a></li>
+                <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/car}">Samochody</a></li>
+                <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/serwis}">Serwisy</a></li>
+                <li><a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="dropdown-item" th:href="@{/telefon}">Telefony</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <form method="post" th:action="@{/index}">
                   <li><a href="javascript:$('form').submit()" class="dropdown-item">Wyloguj</a></li>
