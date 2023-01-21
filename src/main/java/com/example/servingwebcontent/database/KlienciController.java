@@ -1,12 +1,16 @@
 package com.example.servingwebcontent.database;
 
 import com.example.servingwebcontent.registration.UserDto;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 import java.util.List;
 
@@ -15,6 +19,14 @@ public class KlienciController {
 
     @Autowired
     private KlienciDAO dao;
+
+    @Autowired
+    private AdresyDAO daoAdresy;
+
+    @Autowired
+    private TelefonyDAO daoTelefony;
+
+
 
     @RequestMapping(value={"/klient"})
     public String showDbPage(Model model) {
@@ -44,16 +56,26 @@ public class KlienciController {
     public ModelAndView showEditForm(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("klient/edit_klient");
         Klient klient = dao.get(id);
+        Adres adres = daoAdresy.get(klient.getNr_adresu());
+        Telefon telefon = daoTelefony.get(klient.getNr_zbioru_telefonow());
         mav.addObject("klient", klient);
+        mav.addObject("adres", adres);
+        mav.addObject("telefon", telefon);
 
         return mav;
     }
 
     @RequestMapping(value = "/update_klient", method = RequestMethod.POST)
-    public String update(@ModelAttribute("klient") Klient klient) {
+    public String update(@ModelAttribute("klient") Klient klient, @ModelAttribute("adres") Adres adres, @ModelAttribute("telefon") Telefon telefon, HttpServletRequest request) {
         dao.update(klient);
+        daoAdresy.update(adres);
+        daoTelefony.update(telefon);
 
-        return "redirect:/klient";
+        if (request.isUserInRole("Client")) {
+            return "redirect:/main_client";
+        } else {
+            return "redirect:/index";
+        }
     }
 
     @RequestMapping("/delete_klient/{id}")
