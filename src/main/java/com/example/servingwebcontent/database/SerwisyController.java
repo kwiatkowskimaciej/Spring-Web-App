@@ -33,8 +33,11 @@ public class SerwisyController {
 
     @RequestMapping(value = "/save_serwis", method = RequestMethod.POST)
     public String save(@ModelAttribute("serwis") Serwis serwis) {
-        dao.save(serwis);
-
+        try {
+            dao.save(serwis);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/serwis";
     }
 
@@ -49,8 +52,11 @@ public class SerwisyController {
 
     @RequestMapping(value = "/update_serwis", method = RequestMethod.POST)
     public String update(@ModelAttribute("serwis") Serwis serwis) {
-        dao.update(serwis);
-
+        try {
+            dao.update(serwis);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/serwis";
     }
 

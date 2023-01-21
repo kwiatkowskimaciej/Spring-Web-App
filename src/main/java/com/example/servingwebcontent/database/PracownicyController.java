@@ -33,8 +33,11 @@ public class PracownicyController {
 
     @RequestMapping(value = "/save_pracownik", method = RequestMethod.POST)
     public String save(@ModelAttribute("pracownik") Pracownik pracownik) {
-        dao.save(pracownik);
-
+        try {
+            dao.save(pracownik);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/pracownik";
     }
 
@@ -49,8 +52,11 @@ public class PracownicyController {
 
     @RequestMapping(value = "/update_pracownik", method = RequestMethod.POST)
     public String update(@ModelAttribute("pracownik") Pracownik pracownik) {
-        dao.update(pracownik);
-
+        try {
+            dao.update(pracownik);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/pracownik";
     }
 

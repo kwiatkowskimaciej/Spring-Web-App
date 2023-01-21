@@ -35,8 +35,11 @@ public class FirmyController {
 
     @RequestMapping(value = "/save_firma", method = RequestMethod.POST)
     public String save(@ModelAttribute("firma") Firma firma) {
-        dao.save(firma);
-
+        try {
+            dao.save(firma);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/firma";
     }
 
@@ -51,8 +54,11 @@ public class FirmyController {
 
     @RequestMapping(value = "/update_firma", method = RequestMethod.POST)
     public String update(@ModelAttribute("firma") Firma firma) {
-        dao.update(firma);
-
+        try {
+            dao.update(firma);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/firma";
     }
 

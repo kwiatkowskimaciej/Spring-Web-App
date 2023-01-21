@@ -35,7 +35,11 @@ public class FabrykiController {
 
     @RequestMapping(value = "/save_fabryka", method = RequestMethod.POST)
     public String save(@ModelAttribute("fabryka") Fabryka fabryka) {
-        dao.save(fabryka);
+        try {
+            dao.save(fabryka);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
 
         return "redirect:/fabryka";
     }
@@ -51,8 +55,11 @@ public class FabrykiController {
 
     @RequestMapping(value = "/update_fabryka", method = RequestMethod.POST)
     public String update(@ModelAttribute("fabryka") Fabryka fabryka) {
-        dao.update(fabryka);
-
+        try {
+            dao.update(fabryka);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/fabryka";
     }
 
