@@ -1,62 +1,147 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:insert="~{general :: head (pageTitle='Edit Klient')}"></head>
 <body>
 <nav th:replace="~{general :: navbar}"> </nav>
 
 <div class="container col-xxl-8 px-4 py-5 article-container">
-  <h1>Edytuj Klienta</h1>
-  <form class="database-form" action="#" th:action="@{/update_klient}" th:object="${klient}" method="post">
+  <h1 sec:authorize="hasRole('CLIENT')">Edytuj Swoje Dane</h1>
+  <h1 sec:authorize="hasAnyRole('ADMIN','PRACOWNIK')">Edytuj Klienta</h1>
 
+  <form class="database-form" action="#" th:action="@{/update_klient}" method="post">
+
+      <h3 class="border-bottom">Dane personalne</h3>
     <div class="mb-3">
       <label for="NumerSalonu" class="form-label">Numer Klienta</label>
-      <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{nr_klienta}" readonly="readonly">
+      <input type="text" class="form-control" id="NumerSalonu" aria-describedby="nazwaHelp" th:field="*{klient.nr_klienta}" readonly="readonly">
       <!--      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
     </div>
 
-    <div class="mb-3">
+    <div class="row">
+    <div class="mb-3 col">
       <label for="Nazwa" class="form-label">Imię</label>
-      <input type="text" class="form-control" id="Nazwa" th:field="*{imie}">
+      <input type="text" class="form-control" id="Nazwa" th:field="*{klient.imie}">
     </div>
 
 
-    <div class="mb-3">
+    <div class="mb-3 col">
       <label for="nazwisko" class="form-label">Nazwisko</label>
-      <input type="text" class="form-control" id="nazwisko" th:field="*{nazwisko}">
+      <input type="text" class="form-control" id="nazwisko" th:field="*{klient.nazwisko}">
+    </div>
     </div>
 
-    <div class="mb-3">
+
+    <div class="mb-3 col">
       <label for="plec" class="form-label">Płeć</label>
-      <input type="text" class="form-control" id="plec" th:field="*{plec}">
+      <!--      <input type="text" class="form-control" id="plec" th:field="*{klient.plec}">-->
+      <select id="plec"  class="form-select" th:field="*{klient.plec}">
+        <option th:value="'M'" th:text="Mężczyzna"></option>
+        <option th:value="'K'" th:text="Kobieta"></option>
+      </select>
     </div>
 
     <div class="mb-3">
       <label for="numerKonta" class="form-label">Numer Konta</label>
-      <input type="text" class="form-control" id="numerKonta" th:field="*{nr_konta}">
+      <input type="text" class="form-control" id="numerKonta" th:field="*{klient.nr_konta}">
     </div>
+
+    <h3 class="border-bottom">Dane kontaktowe</h3>
 
     <div class="mb-3">
       <label for="eMail" class="form-label">E-Mail</label>
-      <input type="text" class="form-control" id="eMail" th:field="*{e_mail}">
+      <input type="text" class="form-control" id="eMail" th:field="*{klient.e_mail}">
+    </div>
+
+    <div class="mb-3" hidden>
+      <label for="numer-zbioru-telefonow" class="form-label">Numer Zbioru Telefonów</label>
+      <input type="text" class="form-control" id="numer-zbioru-telefonow" aria-describedby="nazwaHelp" th:field="*{telefon.nr_zbioru_telefonow}" readonly="readonly">
+      <!--      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
     </div>
 
     <div class="mb-3">
+      <label for="pierwszy-telefon" class="form-label">Pierwszy Telefon</label>
+      <input type="text" class="form-control" id="pierwszy-telefon" th:field="*{telefon.pierwszy_telefon}">
+    </div>
+
+<div class="row">
+    <div class="mb-3 col">
+      <label for="drugi-telefon" class="form-label">Drugi Telefon</label>
+      <input type="text" class="form-control" id="drugi-telefon" th:field="*{telefon.drugi_telefon}">
+    </div>
+
+    <div class="mb-3 col">
+      <label for="trzeci-telefon" class="form-label">Trzeci Telefon</label>
+      <input type="text" class="form-control" id="trzeci-telefon" th:field="*{telefon.trzeci_telefon}">
+    </div>
+</div>
+
+    <div class="mb-3" hidden>
       <label for="nr_adresu" class="form-label">nr_adresu</label>
-      <input type="text" class="form-control" id="nr_adresu" th:field="*{nr_adresu}">
-    </div>
-    <div class="mb-3">
-      <label for="nrTelefonow" class="form-label">Numer Zbioru Telefonów</label>
-      <input type="text" class="form-control" id="nrTelefonow" th:field="*{nr_zbioru_telefonow}">
+      <input type="text" class="form-control" id="nr_adresu" th:field="*{klient.nr_adresu}">
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3" hidden>
+      <label for="nrTelefonow" class="form-label">Numer Zbioru Telefonów</label>
+      <input type="text" class="form-control" id="nrTelefonow" th:field="*{klient.nr_zbioru_telefonow}">
+    </div>
+
+    <div class="mb-3" hidden>
       <label for="nrSalonu" class="form-label">Numer Salonu</label>
-      <input type="text" class="form-control" id="nrSalonu" th:field="*{nr_salonu}">
+      <input type="text" class="form-control" id="nrSalonu" th:field="*{klient.nr_salonu}">
     </div>
 
     <div th:if="${param.error}" style="color:red; margin-bottom:15px">
       ERROR: Invalid parameters!
     </div>
+
+    <h3 class="border-bottom">Dane adresowe</h3>
+
+    <div class="mb-3" hidden>
+      <label for="NumerAdresu" class="form-label">Numer Adresu</label>
+      <input type="text" class="form-control" id="NumerAdresu" aria-describedby="nazwaHelp" th:field="*{adres.nr_adresu}" readonly="readonly">
+      <!--      <div id="nazwaHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+    </div>
+
+    <div class="mb-3">
+      <label for="panstwo" class="form-label">Państwo</label>
+      <input type="text" class="form-control" id="panstwo" th:field="*{adres.panstwo}">
+    </div>
+
+    <div class="mb-3">
+      <label for="rejon" class="form-label">Rejon</label>
+      <input type="text" class="form-control" id="rejon" th:field="*{adres.rejon}">
+    </div>
+
+    <div class="row">
+      <div class="mb-3 col">
+        <label for="kod_pocztowy" class="form-label">Kod Pocztowy</label>
+        <input type="text" class="form-control" id="kod_pocztowy" th:field="*{adres.kod_pocztowy}">
+      </div>
+
+    <div class="mb-3 col">
+      <label for="miejscowosc" class="form-label">Miejscowość</label>
+      <input type="text" class="form-control" id="miejscowosc" th:field="*{adres.miejscowosc}">
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="mb-3 col">
+      <label for="ulica" class="form-label">Ulica</label>
+      <input type="text" class="form-control" id="ulica" th:field="*{adres.ulica}">
+    </div>
+
+    <div class="mb-3 col">
+      <label for="numer" class="form-label">Numer</label>
+      <input type="text" class="form-control" id="numer" th:field="*{adres.numer}">
+    </div>
+
+    <div class="mb-3 col">
+      <label for="numer_lokalu" class="form-label">Numer Lokalu</label>
+      <input type="text" class="form-control" id="numer_lokalu" th:field="*{adres.numer_lokalu}">
+    </div>
+    </div>
+
 
     <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">Submit</button>
