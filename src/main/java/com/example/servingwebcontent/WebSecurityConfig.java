@@ -23,19 +23,13 @@ public class WebSecurityConfig {
                         .requestMatchers("/webjars/**").permitAll()
                         .requestMatchers("/main").authenticated()
                         .requestMatchers("/main_admin", "/salon", "/new_salon", "/edit_salon", "/save_salon",
-                                "/adres", "/new_adres", "/edit_adres", "/save_adres",
-                                "/fabryka", "/new_fabryka", "/edit_fabryka", "/save_fabryka",
-                                "/firma", "/new_firma", "/edit_firma", "/save_firma",
-                                "/klient", "/new_klient", "/edit_klient", "/save_klient",
-                                "/pracownik", "/new_pracownik", "/edit_pracownik", "/save_pracownik",
-                                "/serwis", "/new_serwis", "/edit_serwis", "/save_serwis",
-                                "/telefon", "/new_telefon", "/edit_telefon", "/save_telefon").hasRole("ADMIN")
+                                "/pracownik", "/new_pracownik", "/edit_pracownik", "/save_pracownik").hasRole("ADMIN")
                         .requestMatchers("/main_employee", "/adres", "/new_adres", "/edit_adres", "/save_adres",
                                 "/fabryka", "/new_fabryka", "/edit_fabryka", "/save_fabryka",
                                 "/firma", "/new_firma", "/edit_firma", "/save_firma",
                                 "/klient", "/new_klient", "/edit_klient", "/save_klient",
                                 "/serwis", "/new_serwis", "/edit_serwis", "/save_serwis",
-                                "/telefon", "/new_telefon", "/edit_telefon", "/save_telefon").hasRole("EMPLOYEE")
+                                "/telefon", "/new_telefon", "/edit_telefon", "/save_telefon").hasAnyRole("ADMIN", "EMPLOYEE")
                         .requestMatchers("/main_client").hasRole("CLIENT")
                         .anyRequest().permitAll()
                 )
