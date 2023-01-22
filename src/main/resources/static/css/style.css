@@ -134,17 +134,17 @@ margin-bottom: 1rem
     color: #f94449;
 }
 
-.database-form input[type="text"], input[type="date"], #plec {
+.database-form input[type="text"], input[type="date"], #plec, .selection{
     background-color: rgb(45,48,52);
     color: white;
 }
 
-.database-form input[type="text"]:focus, input[type="date"]:focus, #plec:focus{
+.database-form input[type="text"]:focus, input[type="date"]:focus, #plec:focus, .selection:focus{
     background-color: rgb(34,37,41);
     color: white;
 }
 
-.database-form input[type=text], input[type="date"], #plec{
+.database-form input[type=text], input[type="date"], #plec, .selection{
   border: none;
 }
 
@@ -162,10 +162,6 @@ margin-right: 0.5rem;
 
 table {
     position:relative;
-}
-
-form {
-    margin-bottom: 15vh;
 }
 
 h3 {

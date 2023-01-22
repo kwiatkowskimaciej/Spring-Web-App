@@ -21,6 +21,7 @@
             src="https://kit.fontawesome.com/2cf0cb98fc.js"
             crossorigin="anonymous"
     ></script>
+      <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
     <title th:text="${pageTitle}"></title>
   </head>
 
@@ -323,6 +324,9 @@
         th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"
         type="text/javascript"
       ></script>
+      <script>$('table').addClass('sortable');
+$('select').addClass('selection');
+</script>
     </div>
   </body>
 </html>

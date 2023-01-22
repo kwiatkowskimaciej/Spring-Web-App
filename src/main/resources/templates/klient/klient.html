@@ -46,6 +46,7 @@
            data-bs-placement="top"
            data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
         <a class="delete" th:href="@{'/delete_klient/' + ${s.nr_klienta}}"
+           onclick="return confirm('Czy na pewno chcesz skasować ten rekord? Nie będzie można cofnąć tej akcji.');"
            data-bs-toggle="tooltip"
            data-bs-placement="top"
            data-bs-title="Delete"><i class="fa-solid fa-trash"></i></a>
@@ -54,8 +55,6 @@
     </tbody>
   </table>
 </div>
-
-<div th:replace="~{general :: waves}"></div>
 
 <div th:replace="~{general :: scripts}"></div>
 <script>

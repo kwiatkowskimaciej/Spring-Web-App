@@ -26,6 +26,9 @@ public class KlienciController {
     @Autowired
     private TelefonyDAO daoTelefony;
 
+    @Autowired
+    private SalonyDAO salonyDAO;
+
 
 
     @RequestMapping(value={"/klient"})
@@ -41,6 +44,12 @@ public class KlienciController {
     public String showNewForm(Model model) {
         Klient klient = new Klient();
         model.addAttribute("klient", klient);
+        List<Adres> listAdres = daoAdresy.findAll();
+        List<Telefon> listTelefon = daoTelefony.findAll();
+        List<Salon> listSalon = salonyDAO.findAll();
+        model.addAttribute("listAdres", listAdres);
+        model.addAttribute("listTelefon", listTelefon);
+        model.addAttribute("listSalon", listSalon);
 
         return "klient/new_klient";
     }

@@ -41,14 +41,13 @@
         <a class="delete" th:href="@{'/delete_salon/' + ${salon.nr_salonu}}"
            data-bs-toggle="tooltip"
            data-bs-placement="top"
+           onclick="return confirm('Czy na pewno chcesz skasować ten rekord? Nie będzie można cofnąć tej akcji.');"
            data-bs-title="Delete"><i class="fa-solid fa-trash"></i></a>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
-
-<div th:replace="~{general :: waves}"></div>
 
 <div th:replace="~{general :: scripts}"></div>
 <script>

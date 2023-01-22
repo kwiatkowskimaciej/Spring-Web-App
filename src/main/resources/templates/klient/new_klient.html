@@ -27,7 +27,11 @@
 
     <div class="mb-3">
       <label for="plec" class="form-label">Płeć</label>
-      <input type="text" class="form-control" id="plec" th:field="*{plec}">
+<!--      <input type="text" class="form-control" id="plec" th:field="*{plec}">-->
+      <select id="plec"  class="form-select" th:field="*{plec}">
+        <option th:value="'M'" th:text="Mężczyzna"></option>
+        <option th:value="'K'" th:text="Kobieta"></option>
+      </select>
     </div>
 
     <div class="mb-3">
@@ -41,17 +45,26 @@
     </div>
 
     <div class="mb-3">
-      <label for="nr_adresu" class="form-label">nr_adresu</label>
-      <input type="text" class="form-control" id="nr_adresu" th:field="*{nr_adresu}">
+      <label for="nr_adresu" class="form-label">Adres</label>
+<!--      <input type="text" class="form-control" id="nr_adresu" th:field="*{nr_adresu}">-->
+      <select id="nr_adresu" class="form-select" th:field="*{nr_adresu}">
+        <option th:each = "a : ${listAdres}" th:value="${a.nr_adresu}" th:text="${a}"></option>
+      </select>
     </div>
     <div class="mb-3">
-      <label for="nrTelefonow" class="form-label">Numer Zbioru Telefonów</label>
-      <input type="text" class="form-control" id="nrTelefonow" th:field="*{nr_zbioru_telefonow}">
+      <label for="nr-telefonow" class="form-label">Zbiór Telefonów</label>
+<!--      <input type="text" class="form-control" id="nrTelefonow" th:field="*{nr_zbioru_telefonow}">-->
+      <select id="nr-telefonow" class="form-select" th:field="*{nr_zbioru_telefonow}">
+        <option th:each = "t : ${listTelefon}" th:value="${t.nr_zbioru_telefonow}" th:text="${t}"></option>
+      </select>
     </div>
 
     <div class="mb-3">
-      <label for="nrSalonu" class="form-label">Numer Salonu</label>
-      <input type="text" class="form-control" id="nrSalonu" th:field="*{nr_salonu}">
+      <label for="nr-salonu" class="form-label">Numer Salonu</label>
+<!--      <input type="text" class="form-control" id="nrSalonu" th:field="*{nr_salonu}">-->
+      <select id="nr-salonu" class="form-select" th:field="*{nr_salonu}">
+        <option th:each = "s : ${listSalon}" th:value="${s.nr_salonu}" th:text="${s}"></option>
+      </select>
     </div>
 
     <div th:if="${param.error}" style="color:red; margin-bottom:15px">
@@ -100,7 +113,6 @@
   </form>
 </div>
 
-<div th:replace="~{general :: waves}"></div>
 
 <div th:replace="~{general :: scripts}"></div>
 </body>
