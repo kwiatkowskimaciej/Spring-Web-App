@@ -56,8 +56,11 @@ public class KlienciController {
 
     @RequestMapping(value = "/save_klient", method = RequestMethod.POST)
     public String save(@ModelAttribute("klient") Klient klient) {
-        dao.save(klient);
-
+        try {
+            dao.save(klient);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/klient";
     }
 
@@ -76,9 +79,13 @@ public class KlienciController {
 
     @RequestMapping(value = "/update_klient", method = RequestMethod.POST)
     public String update(@ModelAttribute("klient") Klient klient, @ModelAttribute("adres") Adres adres, @ModelAttribute("telefon") Telefon telefon, HttpServletRequest request) {
-        dao.update(klient);
-        daoAdresy.update(adres);
-        daoTelefony.update(telefon);
+        try {
+            dao.update(klient);
+            daoAdresy.update(adres);
+            daoTelefony.update(telefon);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
 
         if (request.isUserInRole("Client")) {
             return "redirect:/main_client";

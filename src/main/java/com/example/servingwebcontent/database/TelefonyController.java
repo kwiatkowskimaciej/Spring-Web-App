@@ -33,8 +33,11 @@ public class TelefonyController {
 
     @RequestMapping(value = "/save_telefon", method = RequestMethod.POST)
     public String save(@ModelAttribute("telefon") Telefon telefon) {
-        dao.save(telefon);
-
+        try {
+            dao.save(telefon);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/telefon";
     }
 
@@ -49,8 +52,11 @@ public class TelefonyController {
 
     @RequestMapping(value = "/update_telefon", method = RequestMethod.POST)
     public String update(@ModelAttribute("telefon") Telefon telefon) {
-        dao.update(telefon);
-
+        try {
+            dao.update(telefon);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/telefon";
     }
 

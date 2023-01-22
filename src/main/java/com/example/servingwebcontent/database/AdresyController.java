@@ -33,7 +33,11 @@ public class AdresyController {
 
     @RequestMapping(value = "/save_adres", method = RequestMethod.POST)
     public String save(@ModelAttribute("adres") Adres adres) {
-        dao.save(adres);
+        try {
+            dao.save(adres);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
 
         return "redirect:/adres";
     }
@@ -49,8 +53,11 @@ public class AdresyController {
 
     @RequestMapping(value = "/update_adres", method = RequestMethod.POST)
     public String update(@ModelAttribute("adres") Adres adres) {
-        dao.update(adres);
-
+        try {
+            dao.update(adres);
+        } catch (Exception exception) {
+            return "redirect:/database_integrity_error";
+        }
         return "redirect:/adres";
     }
 
