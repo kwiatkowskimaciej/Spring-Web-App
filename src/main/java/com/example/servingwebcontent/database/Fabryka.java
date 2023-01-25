@@ -5,7 +5,7 @@ public class Fabryka {
     private String nazwa;
     private String e_mail;
     private String nr_konta;
-    private char czy_zagraniczny;
+    private String czy_zagraniczny;
     private String odleglosc;
     private int nr_adresu;
     private int nr_zbioru_telefonow;
@@ -15,7 +15,7 @@ public class Fabryka {
 
     }
 
-    public Fabryka(int nr_fabryki, String nazwa, String e_mail, String nr_konta, char czy_zagraniczny, String odleglosc, int nr_adresu, int nr_zbioru_telefonow, String pierwszy_telefon) {
+    public Fabryka(int nr_fabryki, String nazwa, String e_mail, String nr_konta, String czy_zagraniczny, String odleglosc, int nr_adresu, int nr_zbioru_telefonow, String pierwszy_telefon) {
         this.nr_fabryki = nr_fabryki;
         this.nazwa = nazwa;
         this.e_mail = e_mail;
@@ -59,11 +59,11 @@ public class Fabryka {
         this.nr_konta = nr_konta;
     }
 
-    public char getCzy_zagraniczny() {
+    public String getCzy_zagraniczny() {
         return czy_zagraniczny;
     }
 
-    public void setCzy_zagraniczny(char czy_zagraniczny) {
+    public void setCzy_zagraniczny(String czy_zagraniczny) {
         this.czy_zagraniczny = czy_zagraniczny;
     }
 

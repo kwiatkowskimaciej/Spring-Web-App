@@ -159,7 +159,8 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <a class="btn btn-danger" th:href="@{/klient}" role="button">Cancel</a>
+            <a sec:authorize="hasAnyRole('ADMIN','EMPLOYEE')" class="btn btn-danger" th:href="@{/klient}" role="button">Cancel</a>
+              <a sec:authorize="hasRole('CLIENT')" class="btn btn-danger" th:href="@{/main}" role="button">Cancel</a>
           </div>
         </div>
       </div>

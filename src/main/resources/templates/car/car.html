@@ -69,7 +69,7 @@
            data-bs-toggle="tooltip"
            data-bs-placement="top"
            data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
-        <a sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')" class="delete" th:href="@{'/delete_car/' + ${s.nr_salonu}}"
+        <a sec:authorize="hasAnyRole('ADMIN', 'EMPLOYEE')" class="delete" th:href="@{'/delete_car/' + ${s.nr_samochodu}}"
            data-bs-toggle="tooltip"
            data-bs-placement="top"
            onclick="return confirm('Czy na pewno chcesz skasować ten rekord? Nie będzie można cofnąć tej akcji.');"

@@ -87,10 +87,10 @@ public class KlienciController {
             return "redirect:/database_integrity_error";
         }
 
-        if (request.isUserInRole("Client")) {
-            return "redirect:/main_client";
+        if (request.isUserInRole("CLIENT")) {
+            return "redirect:/main";
         } else {
-            return "redirect:/index";
+            return "redirect:/klient";
         }
     }
 
