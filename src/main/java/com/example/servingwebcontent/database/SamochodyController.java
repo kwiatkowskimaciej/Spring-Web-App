@@ -62,8 +62,8 @@ public class SamochodyController {
         return mav;
     }
 
-    public static final String ACCOUNT_SID = "${TWILIO_ACCOUNT_SID}";
-    public static final String AUTH_TOKEN = "${TWILIO_AUTH_TOKEN}";
+    public static final String ACCOUNT_SID = System.getenv("TWILIO_ACCOUNT_SID");
+    public static final String AUTH_TOKEN = System.getenv("TWILIO_AUTH_TOKEN");
 
     @RequestMapping(value = "/update_car", method = RequestMethod.POST)
     public String update(@ModelAttribute("samochod") Samochod samochod, HttpServletRequest request) {
@@ -78,8 +78,8 @@ public class SamochodyController {
                     AUTH_TOKEN);
 
             Message.creator(
-                            new PhoneNumber("${TWILIO_PHONE_NUMBER_FIRST}"),
-                            new PhoneNumber("{TWILIO_PHONE_NUMBER_SECOND}"),
+                            new PhoneNumber(System.getenv("TWILIO_PHONE_NUMBER_FIRST")),
+                            new PhoneNumber(System.getenv("TWILIO_PHONE_NUMBER_SECOND")),
                             "Twoje zamówienie niedługo zostanie dostarczone do Twojego garażu.")
                     .create();
         }
